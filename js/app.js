@@ -15,4 +15,10 @@ myApp.config(function($stateProvider){
             templateUrl: 'view/new-user.html',
             controller: 'newUserController'
         })
+        .state({
+            name: 'all-movies',
+            url:'/movies',
+            templateUrl: 'view/all-movies.html',
+            controller: 'movieController.js'
+        })
 })
