@@ -13,7 +13,7 @@ myApp.controller('loginController',['$scope', 'LoginService', '$state', function
                 $scope.user.password='';
                 console.log(resp.data.token);
 
-                // $state.go('homePage') //só depois
+                $state.go('all-movies') //só depois
             })
             .catch(() => {
                 localStorage.clear()

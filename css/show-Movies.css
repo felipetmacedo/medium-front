@@ -1,0 +1,73 @@
+.main-div-show{
+    display: flex;
+    align-items: center;
+}
+
+.poster-image-div{
+    padding: 3vh;
+    height: 88vh;
+}
+
+.poster-image{
+    margin-top: 3.5vh;
+    height: 75vh;
+}
+
+.text-div{
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.036);
+    border-radius: 0.25rem;
+    height: 60vh;
+    width: 40vw;
+    margin-left: 5vw;
+}
+
+.movie-info-title{
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-left: 2vw;
+    font-family: 'Montserrat', sans-serif;
+}
+.movie-info{
+    color: white;
+    margin-left: 2vw;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 1vh;
+    font-family: 'Montserrat', sans-serif;
+}
+.movie-info-synopsis{
+    color: white;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: -1vh;
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+}
+.movie-info-genre{
+    color: rgba(255, 255, 255, 0.353);
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: -2vh;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+.movie-info-director{
+    color: rgba(255, 255, 255, 0.54);
+    margin-top: -2.5vh;
+    margin-left: 2vw;
+    font-size: 18px;
+    font-weight:600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.buttons-show-item{
+    margin-left: 2vw;
+    margin-top: 2vh;
+}

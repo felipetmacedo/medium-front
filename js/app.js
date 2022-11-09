@@ -19,6 +19,12 @@ myApp.config(function($stateProvider){
             name: 'all-movies',
             url:'/movies',
             templateUrl: 'view/all-movies.html',
-            controller: 'movieController.js'
+            controller: 'movieController'
+        })
+        .state({
+            name: 'show-movie',
+            url:'/movies/:id',
+            templateUrl: 'view/show-movie.html',
+            controller: 'showMovieController'
         })
 })
