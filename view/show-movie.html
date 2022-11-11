@@ -2,18 +2,15 @@
     <header class="header">
         <img class="full-logo-header" src="../assets/images/fullMovies.png">
         <div class="buttons-header">
-            <div class="input-container" style="margin-right: 20px;">
-                <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="pesquise aqui...">
-            </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;" ui-sref="all-movies">movies</button>
-            <button id="far-right-button" class="buttons-header-item  form-control btn btn-outline-light"
-                style="width: 6vw;"">profile</button>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
+                ui-sref="all-movies">return</button>
+            <button class="buttons-header-item  form-control btn btn-outline-light"style="width: 6vw;"ui-sref="profile">profile</button>
+            <button class=" buttons-header-item form-control btn btn-primary" style="width:6vw" ui-sref="login">log out</button>
         </div>
     </header>
     <div class="main-div-show">
         <div class="poster-image-div">
-            <img class="poster-image"  src="../assets/covers/{{cover.filename}}">
+            <img class="poster-image" src="../assets/covers/{{cover.filename}}">
         </div>
         <div class="text-div">
             <p class="movie-info-title">{{cover.movie.name}}</p>
@@ -24,7 +21,8 @@
                 <p class="movie-info">Genre: {{cover.movie.genre}}</p>
             </div>
             <p class="movie-info-synopsis">{{cover.movie.synopsis}}</p>
-            <button class="buttons-show-item form-control btn btn-outline-light" style="width: 6vw;" ui-sref="">add</button>
+            <button class="buttons-show-item form-control btn btn-outline-light" style="width: 6vw;"
+                ui-sref="">add</button>
         </div>
     </div>
 

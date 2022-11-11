@@ -4,18 +4,19 @@
         <div class="buttons-header">
             <div class="input-container" style="margin-right: 20px;">
                 <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="pesquise aqui..." ng-model="busca">
+                <input class="search-input" type="text" placeholder="pesquise aqui..." ng-model="buscarFilmes" ng-change="busca()">
             </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"ui-sref="all-movies">movies</button>
-            <button id="far-right-button" class="buttons-header-item  form-control btn btn-outline-light"
-                style="width: 6vw;">profile</button>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;" ui-sref="all-movies">movies</button>
+            <button class="buttons-header-item  form-control btn btn-outline-light"
+            ui-sref="profile"   style="width: 6vw;">profile</button>
+            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ui-sref="login">log out</button>
         </div>
     </header>
     <div class="bestMovies-container">
         <h1 class="bestMovies-text">Top 20 movies:</h1>
     </div>
     <div class="grid-container">
-        <section class="grid-item" ng-repeat="cover in covers | filter: busca">
+        <section class="grid-item" ng-repeat="cover in covers">
             <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
                 <img id="card-img" ng-src="../assets/covers/{{cover.filename}}">
                 <div class="divRating">

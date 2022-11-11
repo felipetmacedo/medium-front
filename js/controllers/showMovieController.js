@@ -8,8 +8,8 @@ myApp.controller('showMovieController',['$scope', 'MovieService', '$state', func
                 $scope.cover = resp.data
                 console.log($scope.cover,'cover!');
             })
-            .catch(() => {
-                console.log(resp.data, 'epaa');
+            .catch((err) => {
+                console.log(err, 'epaa');
             })
     }
     show()

@@ -4,7 +4,6 @@ myApp.controller('loginController',['$scope', 'LoginService', '$state', function
         password:''
     }
     const login = () => {
-        console.log($scope.user)
         LoginService.getToken($scope.user)
             .then(resp => {
                 localStorage.setItem("token", resp.data.token);
@@ -15,7 +14,8 @@ myApp.controller('loginController',['$scope', 'LoginService', '$state', function
 
                 $state.go('all-movies') //só depois
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err)
                 localStorage.clear()
                 $scope.user.password = ''
                 console.log('oi');
