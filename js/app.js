@@ -39,10 +39,10 @@ myApp.config(function($stateProvider, $httpProvider){
             onEnter: isAuthorized
         })
         .state({
-            name: 'watched',
-            url:'/profile/watched',
-            templateUrl: 'view/watched-movies.html',
-            controller: 'watchedMoviesController',
+            name: 'update-user',
+            url:'/profile/update',
+            templateUrl: 'view/update-user.html',
+            controller: 'updateUserController',
             onEnter: isAuthorized
         })
 })

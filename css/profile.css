@@ -35,6 +35,6 @@
 .grid-container-profile {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(7, 8.5vw);
+    grid-template-columns: repeat(7, 8.2vw);
     margin-left: 2vw;
 }

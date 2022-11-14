@@ -4,7 +4,7 @@
         <div class="buttons-header">
             <div class="input-container" style="margin-right: 20px;">
                 <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="pesquise aqui...">
+                <input class="search-input" type="text" placeholder="search users..." ng-model="buscarUsers" ng-change="buscaUser()">
             </div>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;" ui-sref="all-movies">return</button>
             <button class="buttons-header-item  form-control btn btn-outline-light"
@@ -21,9 +21,9 @@
             </div>
             <div>
                 <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content; margin-right: -35px" ui-sref="all-movies">add new movies</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content; margin-right: -35px" ui-sref="">update user</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content; margin-right: -35px" ui-sref="update-user">update user</button>
             </div>
-            <button class="buttons-show-item form-control btn btn-light" style="width:fit-content" ui-sref="">delete user</button>
+            <button class="buttons-show-item form-control btn btn-light" style="width:fit-content" ng-click="deleteUser()">delete user</button>
         </div>
         <div class="grid-container-profile">
             <section class="grid-item" ng-repeat="watched in watcheds.allImages">

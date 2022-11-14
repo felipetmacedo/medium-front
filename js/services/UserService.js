@@ -8,5 +8,18 @@ myApp.service("UserService", function($http) {
     this.watchedMovies = () => {
         return $http.get(`${baseUrl}covers/watched/`)
     }
+    this.updateUser = (data) => {
+        return $http.put(`${baseUrl}users/`, data)
+    }
+    this.deleteUser = () => {
+        return $http.delete(`${baseUrl}users/`)
+    }
+    this.allUsers = filter => {
+        if(filter){
+            return $http.get(`${baseUrl}users/all?username=${filter}`)
+        }
+        
+        return $http.get(`${baseUrl}users/`)
+    }
     
 });

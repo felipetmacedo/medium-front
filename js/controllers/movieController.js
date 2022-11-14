@@ -1,15 +1,22 @@
-myApp.controller('movieController',['$scope', 'MovieService', '$state', function($scope,MovieService, $state){
+myApp.controller('movieController', ['$scope', 'MovieService', '$state', function ($scope, MovieService, $state) {
 
     const index = () => {
         MovieService.getCovers($scope.buscarFilmes)
             .then(resp => {
-                // console.log(resp.data, 'funcinou!(supostamente)');
                 $scope.covers = resp.data
             })
-            .catch(() => {
-                // console.log(resp.data, 'epaa');
+            .catch((e) => {
+                console.log(e);
             })
+
     }
+
+    const logOut = () => {
+        $state.go('login')
+        localStorage.clear()
+    }
+
+    $scope.logOut = logOut
     $scope.busca = index
     index()
 }])
