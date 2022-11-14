@@ -4,9 +4,9 @@ myApp.controller("profileController", ['$scope', "UserService", "$state", functi
         profile()
     }
 
-    const index = () => {
-        UserService.allUsers(filter)
-            .then(resp => {
+    const everyUser = () => {
+        UserService.allUsers($scope.buscarUsers)
+        .then(resp => {
                 $scope.users = resp.data
                 console.log($scope.users, 'users');
             }).catch((e) => {
@@ -65,7 +65,25 @@ myApp.controller("profileController", ['$scope', "UserService", "$state", functi
 
     }
 
-    $scope.buscaUsers = index
+    const logOut = () => {
+        Swal.fire({
+            title: 'log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $state.go('login')
+              localStorage.clear()
+            }
+          })
+    }
+
+
+    $scope.logOut = logOut
+    $scope.buscaUsers = everyUser
     $scope.deleteUser = deleteUser
     init()
 }]);

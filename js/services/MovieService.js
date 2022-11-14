@@ -4,9 +4,9 @@ myApp.service("MovieService", function($http) {
     }
     this.getCovers = filter => {
         if (filter){
-            // console.log(filter,'oi');
             return $http.get(`${baseUrl}covers/all?name=${filter}`) 
         }
         return $http.get(`${baseUrl}covers/all`)
     }
+    
 });

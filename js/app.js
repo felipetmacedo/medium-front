@@ -1,4 +1,4 @@
-const myApp = angular.module("movies", ['ui.router']);
+const myApp = angular.module("movies", ['ui.router', 'ui.bootstrap']);
 const baseUrl = 'http://localhost:3001/'
 
 myApp.config(function($stateProvider, $httpProvider){

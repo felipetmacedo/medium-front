@@ -4,12 +4,14 @@
         <div class="buttons-header">
             <div class="input-container" style="margin-right: 20px;">
                 <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="search users..." ng-model="buscarUsers" ng-change="buscaUser()">
+                <input  class="search-input" type="text" placeholder="search users..." ng-model="buscarUsers" ng-change="buscaUsers()"
+                uib-typeahead="user.username for user in users | filter: $viewValue"
+                ng-click="">
             </div>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;" ui-sref="all-movies">return</button>
             <button class="buttons-header-item  form-control btn btn-outline-light"
             ui-sref="profile"   style="width: 6vw;">profile</button>
-            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ui-sref="login">log out</button>
+            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log out</button>
         </div>
     </header>
     <div class="main-div-profile">

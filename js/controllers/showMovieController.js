@@ -12,5 +12,24 @@ myApp.controller('showMovieController',['$scope', 'MovieService', '$state', func
                 console.log(err, 'epaa');
             })
     }
+
+    const logOut = () => {
+        Swal.fire({
+            title: 'log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $state.go('login')
+              localStorage.clear()
+            }
+          })
+    }
+
+
+    $scope.logOut = logOut
     show()
 }])

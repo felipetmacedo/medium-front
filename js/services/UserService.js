@@ -16,9 +16,10 @@ myApp.service("UserService", function($http) {
     }
     this.allUsers = filter => {
         if(filter){
-            return $http.get(`${baseUrl}users/all?username=${filter}`)
+            console.log(filter, 'filter user');
+            return $http.get(`${baseUrl}users?username=${filter}`)
         }
-        
+
         return $http.get(`${baseUrl}users/`)
     }
     

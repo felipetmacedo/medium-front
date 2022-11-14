@@ -21,6 +21,23 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
         })
     }
 
+    const logOut = () => {
+        Swal.fire({
+            title: 'log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $state.go('login')
+              localStorage.clear()
+            }
+          })
+    }
+
+    $scope.logOut = logOut
     $scope.updateUser = updateUser
     showUser()
 }]);
