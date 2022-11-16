@@ -9,17 +9,17 @@
     align-items: center;
     justify-content: center;
     border: #40187550;
-    border-style:solid;
+    border-style: solid;
     border-width: 3px;
     color: white;
     font-weight: bold;
 }
 
-.update-text{
+.update-text {
     text-align: center;
     margin-top: -6vh;
     margin-bottom: 6vh;
     font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bolder;
 }

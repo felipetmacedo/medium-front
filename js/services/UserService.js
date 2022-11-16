@@ -1,15 +1,15 @@
-myApp.service("UserService", function($http) {
-    this.create = (data) =>  {
+myApp.service("UserService", function ($http) {
+    this.create = (data) => {
         return $http.post(`${baseUrl}users/`, data)
     };
     this.profile = id => {
-        if(id){
+        if (id) {
             return $http.get(`${baseUrl}users/profile/${id}`)
         }
         return $http.get(`${baseUrl}users/profile/`)
     };
     this.watchedMovies = (id) => {
-        if(id){
+        if (id) {
             return $http.get(`${baseUrl}covers/watched/${id}`)
         }
         return $http.get(`${baseUrl}covers/watched/`)
@@ -21,10 +21,10 @@ myApp.service("UserService", function($http) {
         return $http.delete(`${baseUrl}users/`)
     }
     this.allUsers = filter => {
-        if(filter){
+        if (filter) {
             return $http.get(`${baseUrl}users?username=${filter}`)
         }
         return $http.get(`${baseUrl}users/`)
     }
-    
+
 });

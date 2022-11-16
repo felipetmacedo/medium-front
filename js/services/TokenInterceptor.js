@@ -1,6 +1,6 @@
 myApp.factory('BearerAuthInterceptor', function ($window, $q, $rootScope) {
     return {
-        request: function(config) {
+        request: function (config) {
 
             config.headers = config.headers || {};
             if ($window.localStorage.getItem('token')) {
@@ -10,7 +10,7 @@ myApp.factory('BearerAuthInterceptor', function ($window, $q, $rootScope) {
             $rootScope.userLogged = config.headers.authorization ? true : false;
             return config || $q.when(config);
         },
-        response: function(response) {
+        response: function (response) {
             if (response.status === 401) {
                 //  Redirect user to login page / signup Page.
             }

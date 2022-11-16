@@ -11,7 +11,7 @@ myApp.controller("newUserController", ['$scope', "UserService", "$state", functi
 
     const create = () => {
         return UserService.create($scope.userData)
-        .then(() => {
+            .then(() => {
                 $scope.err = false;
                 $state.go('login');
             })

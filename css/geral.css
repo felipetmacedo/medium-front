@@ -1,4 +1,3 @@
-
 .movies-background {
     background-image: url("../assets/images/moviesBackground.png");
     width: 60vw;
@@ -10,7 +9,7 @@
     background-size: cover;
 }
 
-.header{
+.header {
     background-color: #0000002a;
     height: 12vh;
     display: flex;
@@ -36,18 +35,18 @@
     outline: none;
 }
 
-.full-logo-header{
+.full-logo-header {
     height: 12vh;
     padding: 2vh;
     padding-left: 1.5vw;
 }
 
-.buttons-header{
+.buttons-header {
     align-items: center;
     display: flex;
 }
 
-.buttons-header-item{
+.buttons-header-item {
     margin-right: 5px;
     text-align: center;
 }

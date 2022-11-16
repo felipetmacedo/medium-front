@@ -1,4 +1,3 @@
-
 .login-form-container {
     justify-content: center;
     flex: 0.85;
@@ -45,18 +44,18 @@
     margin-top: 10px;
     font-weight: 100;
     font-size: 12px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     color: #ffffff;
 }
 
-.login-esqueceu-senha{
+.login-esqueceu-senha {
     margin-top: 10px;
-    font-weight:100;
+    font-weight: 100;
     font-size: 12px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    color:  #C8A5E6;
+    color: #C8A5E6;
 }
 
 .full-logo-container-login {
@@ -65,7 +64,7 @@
     justify-content: center;
 }
 
-.full-logo{
+.full-logo {
     width: 150px;
     margin-bottom: 20px;
     margin-top: -50px;

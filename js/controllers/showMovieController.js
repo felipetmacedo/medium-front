@@ -19,28 +19,28 @@ myApp.controller('showMovieController', ['$scope', 'MovieService', '$state', fun
         console.log(id);
         console.log($scope.email);
 
-    }).catch((err) => {
-      console.log(err);
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const logOut = () => {
+    Swal.fire({
+      title: 'log out?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $state.go('login')
+        localStorage.clear()
+      }
     })
   }
 
-const logOut = () => {
-  Swal.fire({
-    title: 'log out?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'yes'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $state.go('login')
-      localStorage.clear()
-    }
-  })
-}
-
-$scope.addWatched = addWatched
-$scope.logOut = logOut
-show()
+  $scope.addWatched = addWatched
+  $scope.logOut = logOut
+  show()
 }])

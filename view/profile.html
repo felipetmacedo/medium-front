@@ -8,10 +8,11 @@
                     ng-change="buscaUsers()"
                     uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
                     typeahead-template-url="view/customTemplate.html" typeahead-show-hint="true"
-                    typeahead-on-select="refresh(buscarUsers)" style="color: black; margin-left: 15px; border-radius: 0%; width: 300px;">
+                    typeahead-on-select="refresh(buscarUsers)"
+                    style="color: black; margin-left: 15px; border-radius: 0%; width: 300px;">
             </div>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
-                ui-sref="all-movies" >return</button>
+                ui-sref="all-movies">return</button>
             <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
                 style="width: 6vw;">profile</button>
             <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log

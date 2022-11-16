@@ -1,10 +1,10 @@
-.main-div-profile{
+.main-div-profile {
     display: flex;
     align-items: center;
     margin-top: 12vh;
 }
 
-.text-div-profile{
+.text-div-profile {
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
     margin-left: 5vw;
 }
 
-.profile-info-title{
+.profile-info-title {
     color: white;
     font-size: 40px;
     font-weight: bolder;
@@ -23,7 +23,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.profile-info{
+.profile-info {
     color: white;
     margin-left: 2vw;
     font-weight: bold;

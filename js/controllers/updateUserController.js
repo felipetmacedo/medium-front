@@ -5,19 +5,19 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
 
     const updateUser = (data) => {
         return UserService.updateUser(data)
-        .then(() => {
-            $state.go('profile')
-        })
-        .catch((e) => {
-            console.log(e);
-        })
+            .then(() => {
+                $state.go('profile')
+            })
+            .catch((e) => {
+                console.log(e);
+            })
     }
     const showUser = () => {
         return UserService.profile()
-        .then(resp => {
-            $scope.updateUserInfo = resp.data
-            $scope.updateUserInfo.email = $scope.email
-        })
+            .then(resp => {
+                $scope.updateUserInfo = resp.data
+                $scope.updateUserInfo.email = $scope.email
+            })
     }
 
     const logOut = () => {
@@ -28,12 +28,12 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'yes'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              $state.go('login')
-              localStorage.clear()
+                $state.go('login')
+                localStorage.clear()
             }
-          })
+        })
     }
 
     $scope.logOut = logOut

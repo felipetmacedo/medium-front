@@ -1,53 +1,53 @@
 const myApp = angular.module("movies", ['ui.router', 'ui.bootstrap']);
 const baseUrl = 'http://localhost:3001/'
 
-myApp.config(function($stateProvider, $httpProvider){
+myApp.config(function ($stateProvider, $httpProvider) {
     $httpProvider.interceptors.push('BearerAuthInterceptor');
 
     $stateProvider
         .state({
-            name:'login',
+            name: 'login',
             url: '',
-            templateUrl:'view/login.html',
+            templateUrl: 'view/login.html',
             controller: 'loginController'
         })
         .state({
-            name:'cadastro',
-            url:'/cadastro',
+            name: 'cadastro',
+            url: '/cadastro',
             templateUrl: 'view/new-user.html',
             controller: 'newUserController'
         })
         .state({
             name: 'all-movies',
-            url:'/movies',
+            url: '/movies',
             templateUrl: 'view/all-movies.html',
             controller: 'movieController',
             onEnter: isAuthorized
         })
         .state({
             name: 'show-movie',
-            url:'/movies/:id',
+            url: '/movies/:id',
             templateUrl: 'view/show-movie.html',
             controller: 'showMovieController',
             onEnter: isAuthorized
         })
         .state({
             name: 'profile',
-            url:'/profile',
+            url: '/profile',
             templateUrl: 'view/profile.html',
             controller: 'profileController',
             onEnter: isAuthorized
         })
         .state({
             name: 'search-user-profile',
-            url:'/profile/:id',
+            url: '/profile/:id',
             templateUrl: 'view/profile.html',
             controller: 'profileController',
             onEnter: isAuthorized
         })
         .state({
             name: 'update-user',
-            url:'/profile/update',
+            url: '/profile/update',
             templateUrl: 'view/update-user.html',
             controller: 'updateUserController',
             onEnter: isAuthorized
@@ -56,10 +56,10 @@ myApp.config(function($stateProvider, $httpProvider){
 
 const isAuthorized = ($state, $rootScope) => {
     const isLogged = localStorage.getItem("token");
-    
+
     if (!isLogged) {
-      $state.go('login');
-      return;
+        $state.go('login');
+        return;
     }
 
     $rootScope.isLogged = true;
