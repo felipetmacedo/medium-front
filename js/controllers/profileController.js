@@ -1,38 +1,41 @@
-myApp.controller("profileController", ['$scope', "UserService", "$state", function ($scope, UserService, $state) {
+myApp.controller("profileController", ['$scope', "UserService", "$state", "$location", function ($scope, UserService, $state, $location) {
+    const id = $state.params.id;
+
     const init = () => {
         watched()
         profile()
     }
 
+    // const notUser = (id, userToken) => {
+
+    // }
+
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
-        .then(resp => {
+            .then(resp => {
                 $scope.users = resp.data
-                console.log($scope.users, 'users');
             }).catch((e) => {
                 console.log(e);
             })
     }
 
     const profile = () => {
-        UserService.profile()
+        UserService.profile(id)
             .then(resp => {
                 $scope.user = resp.data
-                console.log($scope.user, 'user!');
             })
             .catch((err) => {
-                console.log(err, 'epaa');
+                console.log(err);
             })
     }
 
     const watched = () => {
-        UserService.watchedMovies()
+        UserService.watchedMovies(id)
             .then(resp => {
                 $scope.watcheds = resp.data
-                console.log($scope.watcheds, 'watched!');
             })
             .catch((err) => {
-                console.log(err, 'epaa');
+                console.log(err);
             })
     }
 
@@ -61,8 +64,10 @@ myApp.controller("profileController", ['$scope', "UserService", "$state", functi
                     })
             }
         })
+    }
 
-
+    const refresh = user => {
+        $location.path(`/profile/${user.id}`)
     }
 
     const logOut = () => {
@@ -73,17 +78,19 @@ myApp.controller("profileController", ['$scope', "UserService", "$state", functi
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'yes'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              $state.go('login')
-              localStorage.clear()
+                $state.go('login')
+                localStorage.clear()
             }
-          })
+        })
     }
 
 
     $scope.logOut = logOut
     $scope.buscaUsers = everyUser
     $scope.deleteUser = deleteUser
+    $scope.refresh = refresh;
+
     init()
 }]);

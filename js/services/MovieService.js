@@ -8,5 +8,8 @@ myApp.service("MovieService", function($http) {
         }
         return $http.get(`${baseUrl}covers/all`)
     }
+    this.addWatched = () => {
+        return $http.get(`${baseUrl}watched/`)
+    }
     
 });

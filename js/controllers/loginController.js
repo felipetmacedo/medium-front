@@ -10,7 +10,6 @@ myApp.controller('loginController',['$scope', 'LoginService', '$state', function
                 localStorage.setItem("email", $scope.user.email);
                 $scope.user.email='';
                 $scope.user.password='';
-                console.log(resp.data.token);
 
                 $state.go('all-movies') //só depois
             })
@@ -18,7 +17,6 @@ myApp.controller('loginController',['$scope', 'LoginService', '$state', function
                 console.log(err)
                 localStorage.clear()
                 $scope.user.password = ''
-                console.log('oi');
 
             })
     }

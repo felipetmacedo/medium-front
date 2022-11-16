@@ -1,7 +1,7 @@
 myApp.factory('BearerAuthInterceptor', function ($window, $q, $rootScope) {
     return {
         request: function(config) {
-            // console.log(config, 'config')
+
             config.headers = config.headers || {};
             if ($window.localStorage.getItem('token')) {
                 // may also use sessionStorage

@@ -39,6 +39,13 @@ myApp.config(function($stateProvider, $httpProvider){
             onEnter: isAuthorized
         })
         .state({
+            name: 'search-user-profile',
+            url:'/profile/:id',
+            templateUrl: 'view/profile.html',
+            controller: 'profileController',
+            onEnter: isAuthorized
+        })
+        .state({
             name: 'update-user',
             url:'/profile/update',
             templateUrl: 'view/update-user.html',

@@ -2,10 +2,16 @@ myApp.service("UserService", function($http) {
     this.create = (data) =>  {
         return $http.post(`${baseUrl}users/`, data)
     };
-    this.profile = () => {
+    this.profile = id => {
+        if(id){
+            return $http.get(`${baseUrl}users/profile/${id}`)
+        }
         return $http.get(`${baseUrl}users/profile/`)
     };
-    this.watchedMovies = () => {
+    this.watchedMovies = (id) => {
+        if(id){
+            return $http.get(`${baseUrl}covers/watched/${id}`)
+        }
         return $http.get(`${baseUrl}covers/watched/`)
     }
     this.updateUser = (data) => {
@@ -16,10 +22,8 @@ myApp.service("UserService", function($http) {
     }
     this.allUsers = filter => {
         if(filter){
-            console.log(filter, 'filter user');
             return $http.get(`${baseUrl}users?username=${filter}`)
         }
-
         return $http.get(`${baseUrl}users/`)
     }
     

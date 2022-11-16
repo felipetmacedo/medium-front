@@ -17,7 +17,6 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
         .then(resp => {
             $scope.updateUserInfo = resp.data
             $scope.updateUserInfo.email = $scope.email
-            console.log($scope.updateUserInfo);
         })
     }
 
