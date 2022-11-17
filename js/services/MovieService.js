@@ -8,8 +8,11 @@ myApp.service("MovieService", function ($http) {
         }
         return $http.get(`${baseUrl}covers/all`)
     }
-    this.addWatched = () => {
-        return $http.get(`${baseUrl}watched/`)
+    this.addWatched = (data) => {
+        return $http.post(`${baseUrl}watched/`,data)
+    }
+    this.removeWatched = (id) => {
+        return $http.delete(`${baseUrl}watched/${id}`,)
     }
 
 });

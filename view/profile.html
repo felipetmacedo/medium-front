@@ -22,6 +22,7 @@
     <div class="main-div-profile">
         <div class="text-div-profile">
             <p class="profile-info-title">{{user.username}}</p>
+            
             <div class="organize-info" style="display: flex; margin-top: -25px;">
                 <p class="profile-info">most watched genre: {{user.most_watched_genre}} </p>
                 <p class="profile-info">total time: {{user.total_time}} minutes</p>
@@ -38,7 +39,7 @@
         <div class="grid-container-profile">
             <section class="grid-item" ng-repeat="watched in watcheds.allImages">
                 <a class="card-image" href="#!/movies/{{watched.movie_id}}">
-                    <img id="card-img" ng-src="../assets/covers/{{watched.filename}}">
+                    <img id="card-img-profile" ng-src="../assets/covers/{{watched.filename}}">
                 </a>
             </section>
         </div>
