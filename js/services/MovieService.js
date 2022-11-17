@@ -21,5 +21,8 @@ myApp.service("MovieService", function ($http) {
         console.log(movie_id, data)
         return $http.put(`${baseUrl}watched/${movie_id}`, data)
     }
+    this.deleteMovie = (id) => {
+        return  $http.delete(`${baseUrl}movies/${id}`)
+    }
 
 });

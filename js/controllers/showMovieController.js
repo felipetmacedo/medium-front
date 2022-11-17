@@ -144,6 +144,37 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
     })
   }
 
+  const deleteMovie = () => {
+    console.log(id);
+    Swal.fire({
+      title: 'delete movie?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        MovieService.deleteMovie(id)
+          .then(() => {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'your movie has been deleted',
+              showConfirmButton: false,
+              timer: 1000
+            })
+            $state.go('all-movies')
+            console.log(id);
+          }).catch((err) => {
+            console.log(err);
+          })
+      }
+    })
+
+  }
+
+  $scope.deleteMovie = deleteMovie
   $scope.updateWatched = updateWatched
   $scope.removeWatched = removeWatched
   $scope.addWatched = addWatched
