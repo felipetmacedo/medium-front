@@ -12,7 +12,14 @@ myApp.service("MovieService", function ($http) {
         return $http.post(`${baseUrl}watched/`,data)
     }
     this.removeWatched = (id) => {
-        return $http.delete(`${baseUrl}watched/${id}`,)
+        return $http.delete(`${baseUrl}watched/${id}`)
+    }
+    this.checkWatched = (movie_id) => {
+        return $http.get(`${baseUrl}watched/${movie_id}`)
+    }
+    this.updateWatched = (movie_id, data) => {
+        console.log(movie_id, data)
+        return $http.put(`${baseUrl}watched/${movie_id}`, data)
     }
 
 });

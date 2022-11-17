@@ -25,10 +25,17 @@
             <p class="movie-info-synopsis">{{cover.movie.synopsis}}</p>
             <div>
                 <button class="buttons-show-item form-control btn btn-outline-light"
-                    style="width:max-content;margin-right: -1vw;" ng-click="addWatched()">add to profile</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width:max-content"
-                    ng-click="removeWatched()">remove from profile</button>
-
+                    style="width:8vw;margin-right: -1vw;" ng-click="addWatched()"
+                    ng-if="!watched && !isAdminUser">add</button>
+                <button class="buttons-show-item form-control btn btn-outline-light"
+                    style="width:8vw; margin-right: -1.5vw;" ng-click="updateWatched()"
+                    ng-if="watched && !isAdminUser">update</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width:8vw"
+                    ng-click="removeWatched()" ng-if="watched && !isAdminUser">remove</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width:10vw; margin-right: -1.5vw;"
+                    ng-click="" ng-show="isAdminUser">delete the movie</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width:10vw"
+                    ng-click="" ng-show="isAdminUser">update the movie</button>
             </div>
         </div>
     </div>

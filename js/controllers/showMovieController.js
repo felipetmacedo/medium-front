@@ -1,6 +1,13 @@
-myApp.controller('showMovieController', ['$scope', 'MovieService', '$state', function ($scope, MovieService, $state) {
-
+myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', '$state', function ( $rootScope ,$scope, MovieService, $state) {
   const id = $state.params.id;
+  $scope.watched = false
+
+  $scope.isAdminUser = !!$rootScope.isAdmin;
+
+  const init = () => {
+    checkWatched()
+    show()
+  }
 
   const show = () => {
     MovieService.showCover(id)
@@ -47,7 +54,7 @@ myApp.controller('showMovieController', ['$scope', 'MovieService', '$state', fun
     })
   }
 
-  const removeWatched = () =>{
+  const removeWatched = () => {
     Swal.fire({
       title: 'delete watched?',
       icon: 'warning',
@@ -58,7 +65,7 @@ myApp.controller('showMovieController', ['$scope', 'MovieService', '$state', fun
     }).then((result) => {
       if (result.isConfirmed) {
         MovieService.removeWatched(id)
-          .then(()=> {
+          .then(() => {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -91,8 +98,55 @@ myApp.controller('showMovieController', ['$scope', 'MovieService', '$state', fun
     })
   }
 
+  const checkWatched = () => {
+    MovieService.checkWatched(id)
+      .then((resp) => {
+        if (resp.data) {
+          $scope.watched = true
+          return
+        }
+
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const updateWatched = () => {
+    Swal.fire({
+      title: 'rating',
+      icon: 'question',
+      input: 'range',
+      inputAttributes: {
+        min: 0,
+        max: 5,
+        step: 1
+      },
+      inputValue: 5
+    }).then(resp => {
+      if (!resp.isConfirmed) {
+        return;
+      }
+      const data = {
+        rating:  ~~resp.value
+      }
+      MovieService.updateWatched(
+        ~~id,
+        data
+      )
+      .then((resp) => {
+        console.log('oi aqui');
+      })
+      .catch((err) => {
+          console.log(id);
+          console.log(err);
+        })
+    })
+  }
+
+  $scope.updateWatched = updateWatched
   $scope.removeWatched = removeWatched
   $scope.addWatched = addWatched
   $scope.logOut = logOut
-  show()
+  init()
 }])

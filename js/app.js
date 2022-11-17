@@ -57,6 +57,8 @@ myApp.config(function ($stateProvider, $httpProvider) {
 const isAuthorized = ($state, $rootScope) => {
     const isLogged = localStorage.getItem("token");
 
+    $rootScope.isAdmin = localStorage.getItem("is_admin");
+
     if (!isLogged) {
         $state.go('login');
         return;

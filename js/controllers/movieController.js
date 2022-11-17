@@ -1,4 +1,6 @@
-myApp.controller('movieController', ['$scope', 'MovieService', '$state', function ($scope, MovieService, $state) {
+myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$state', function ($rootScope,$scope, MovieService, $state) {
+
+  $scope.isAdminUser = !!$rootScope.isAdmin;
 
   const index = () => {
     MovieService.getCovers($scope.buscarFilmes)

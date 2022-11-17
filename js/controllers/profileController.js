@@ -1,14 +1,13 @@
-myApp.controller("profileController", ['$scope', "UserService", "$state", "$location", function ($scope, UserService, $state, $location) {
+myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$state", "$location", function ($rootScope,$scope, UserService, $state, $location) {
     const id = $state.params.id;
+
+    $scope.isAdminUser = !!$rootScope.isAdmin;
+    $scope.showButtons = !$state.params.id;
 
     const init = () => {
         watched()
         profile()
     }
-
-    // const notUser = (id, userToken) => {
-
-    // }
 
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
@@ -23,6 +22,8 @@ myApp.controller("profileController", ['$scope', "UserService", "$state", "$loca
         UserService.profile(id)
             .then(resp => {
                 $scope.user = resp.data
+                console.log(resp);
+
             })
             .catch((err) => {
                 console.log(err);
