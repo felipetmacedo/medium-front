@@ -5,6 +5,21 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
     const init = () => {
         $scope.title = $state.params.id ? 'Edit a movie' : 'Add a movie';
+        if ($state.params.id) {
+            showMovie()
+        }
+    }
+
+    const showMovie = () => {
+        MovieService.showMovie(id)
+        .then((resp) => {
+            $scope.movieData = resp.data
+            console.log(id);
+            console.log($scope.movieData);
+        })
+        .catch((e) => {
+            console.log(e);
+        })
     }
 
     const openSwal = fileParams => {
@@ -82,9 +97,8 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
     const editMovie = () => {
         MovieService.manageMovie($scope.movieData, id)
-            .then(() => {
-
-
+            .then((data) => {
+                console.log(data);
             })
             .catch((e) => {
                 console.log(e);
