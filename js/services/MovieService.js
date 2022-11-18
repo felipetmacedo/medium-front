@@ -24,5 +24,13 @@ myApp.service("MovieService", function ($http) {
     this.deleteMovie = (id) => {
         return  $http.delete(`${baseUrl}movies/${id}`)
     }
+    this.manageMovie = (id) => {
+        if(id){
+            return  $http.put(`${baseUrl}movies/${id}`)
+        }
+        console.log('oi');
+        return  $http.post(`${baseUrl}movies/`)
+    }
+
 
 });

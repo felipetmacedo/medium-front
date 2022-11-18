@@ -29,7 +29,6 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
     })
   }
 
-
   $scope.logOut = logOut
   $scope.busca = index
   index()

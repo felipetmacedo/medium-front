@@ -174,6 +174,14 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
 
   }
 
+  const goUpdateMovie = () => {
+    $state.go('update-movie', {
+      id
+    })
+}
+
+  $scope.goUpdateMovie = goUpdateMovie
+
   $scope.deleteMovie = deleteMovie
   $scope.updateWatched = updateWatched
   $scope.removeWatched = removeWatched

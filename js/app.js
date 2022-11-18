@@ -52,6 +52,20 @@ myApp.config(function ($stateProvider, $httpProvider) {
             controller: 'updateUserController',
             onEnter: isAuthorized
         })
+        .state({
+            name: 'create-movie',
+            url: '/movies/manage',
+            templateUrl: 'view/manage-movie.html',
+            controller: 'manageMovieController',
+            onEnter: isAuthorized
+        })
+        .state({
+            name: 'update-movie',
+            url: '/movies/manage/:id',
+            templateUrl: 'view/manage-movie.html',
+            controller: 'manageMovieController',
+            onEnter: isAuthorized
+        })
 })
 
 const isAuthorized = ($state, $rootScope) => {
