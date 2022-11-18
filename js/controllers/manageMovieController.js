@@ -99,6 +99,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         MovieService.manageMovie($scope.movieData, id)
             .then((data) => {
                 console.log(data);
+                $state.go('all-movies')
             })
             .catch((e) => {
                 console.log(e);
