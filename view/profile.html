@@ -27,9 +27,9 @@
             </div>
             <div>
                 <button class="buttons-show-item form-control btn btn-outline-light"
-                    style="width: max-content; margin-right: -15px ;" ui-sref="all-movies" ng-if="showButtons">add new movies</button>
+                    style="width: max-content; margin-right: -15px ;" ui-sref="all-movies" ng-if="showButtons %% !isAdmin">add new movies</button>
                 <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content;"
-                    ui-sref="update-user" ng-if="showButtons">update user</button>
+                    ui-sref="update-user" ng-if="showButtons %% !isAdmin">update user</button>
             </div>
             <button class="buttons-show-item form-control btn btn-light" style="width:fit-content"
                 ng-click="deleteUser()" ng-if="showButtons">delete user</button>

@@ -10,5 +10,42 @@
                 out</button>
         </div>
     </header>
-
+    <div class="container-manage">
+        <div class="login-form-container">
+            <form class="form-login">
+                <h1 class="title-admin">{{title}}</h1>
+                <div class="login-container-form-item">
+                    <label for="name">name</label>
+                    <input class="form-control" type="text" ng-model="movieData.name" ng-required="true" />
+                </div>
+                <div class="login-container-form-item">
+                    <label for="director">director</label>
+                    <input class="form-control" ng-model="movieData.director" ng-required="true">
+                </div>
+                <div class="login-container-form-item">
+                    <label for="genre">genre</label>
+                    <input class="form-control" ng-model="movieData.genre" ng-required="true" />
+                </div>
+                <div class="login-container-form-item">
+                    <label for="time">time</label>
+                    <input class="form-control" ng-model="movieData.time" ng-required="true" type="number" />
+                </div>
+                <div class="login-container-form-item">
+                    <label for="synopsis">synopsis</label>
+                    <input class="form-control" ng-model="movieData.synopsis" ng-required="true" />
+                </div>
+                <!-- <div class="login-container-form-item" style="display: flex; flex-direction:column;">
+                    <label for="cover">cover</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <label class="custom-file-label" for="inputGroupFile01" ng-model="movieData.cover" ng-required="true">Choose file</label>
+                    </div>
+                </div> -->
+                <div class="login-container-form-item">
+                    <button class="btn btn-block cadastro-button" ng-click="actionFunction()"
+                        ng-disabled="!movieData.name || !movieData.director || !movieData.genre|| !movieData.time || !movieData.synopsis">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

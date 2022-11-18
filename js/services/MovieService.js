@@ -24,12 +24,16 @@ myApp.service("MovieService", function ($http) {
     this.deleteMovie = (id) => {
         return  $http.delete(`${baseUrl}movies/${id}`)
     }
-    this.manageMovie = (id) => {
+    this.manageMovie = (data,id) => {
         if(id){
-            return  $http.put(`${baseUrl}movies/${id}`)
+            return  $http.put(`${baseUrl}movies/${id}`, data)
         }
-        console.log('oi');
-        return  $http.post(`${baseUrl}movies/`)
+        return  $http.post(`${baseUrl}movies/`, data)
+    }
+    this.addCover = (data, id) => {
+        console.log(data)
+        console.log(id, 'id')
+        return  $http.post(`${baseUrl}covers/${id}`,{file: data})
     }
 
 

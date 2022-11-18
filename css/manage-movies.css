@@ -1,0 +1,44 @@
+.container-manage {
+    display: flex;
+    border-radius: 15px;
+    background-color: #3213635a;
+    height: 80vh;
+    width: 40vw;
+    margin: auto;
+    margin-top: 5vh;
+    align-items: center;
+    justify-content: center;
+    border: #40187550;
+    border-style: solid;
+    border-width: 3px;
+    color: white;
+    font-weight: bold;
+}
+
+.full-logo-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.cadastro-button {
+    margin-top: 30px;
+    background-color: #6A26AC;
+    color: white;
+    font-weight: bold;
+}
+
+.cadastro-button:hover {
+    margin-top: 30px;
+    background-color: #ffffff;
+    color: #6A26AC;
+    font-weight: bold;
+}
+
+.title-admin {
+    text-align: center;
+    margin-bottom: 4vh;
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+}

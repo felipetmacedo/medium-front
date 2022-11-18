@@ -1,8 +1,97 @@
-myApp.controller('manageMovieController', ['$rootScope','$scope', 'MovieService', '$state', function ($rootScope,$scope, MovieService, $state) {
+myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService', '$state', function ($rootScope, $scope, MovieService, $state) {
 
     const id = $state.params.id;
     $scope.isAdminUser = !!$rootScope.isAdmin;
-    
+
+    const init = () => {
+        $scope.title = $state.params.id ? 'Edit a movie' : 'Add a movie';
+    }
+
+    const openSwal = fileParams => {
+        Swal.fire({
+            title: 'Select image',
+            input: 'file',
+            inputAttributes: {
+                'accept': 'image/*',
+                'aria-label': 'Upload your profile picture'
+            }
+        }).then(file => {
+            console.log(file, 'file')
+            if (file) {
+                const reader = new FileReader()
+
+                MovieService.addCover(file.value, fileParams).then(() => {
+                    Swal.fire({
+                        title: 'Your uploaded picture',
+                        imageUrl: file.target.result,
+                        imageAlt: 'The uploaded picture'
+                    })
+                }).catch(error => {
+                    console.log(error)
+                })
+                reader.onload = (e) => {
+                    const srcData = e.target.result;
+                    console.log(srcData, 'kjasgk')
+                    newImage.src = srcData;
+                    $scope.formCar.img = srcData;
+
+                    console.log(e, 'wegv')
+                    reader.readAsDataURL(file)
+                    console.log(data, 'data')
+
+                }
+
+            }
+
+        })
+    }
+
+    const createMovie = () => {
+        console.log('criou')
+        MovieService.manageMovie($scope.movieData).then(resp => {
+            openSwal(resp.data.id)
+        }).catch(e => {
+            console.log(e, 'err9r');
+            const confirmation = Swal.fire({
+                title: 'dados inválidos',
+                icon: 'error',
+                confirmButtonColor: '#04052e',
+                timer: 500
+            });
+            if (!confirmation.isConfirmed) {
+                return;
+            }
+        })
+    }
+
+    const createCover = (data) => {
+        MovieService.addCover(data, id)
+            .then(() => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'movie created',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+                $state.go('all-movies')
+            }).catch((e) => {
+                console.log(e);
+            })
+    }
+
+    const editMovie = () => {
+        MovieService.manageMovie($scope.movieData, id)
+            .then(() => {
 
 
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+
+    }
+
+    $scope.actionFunction = $state.params.id ? editMovie : createMovie
+    init()
 }])
