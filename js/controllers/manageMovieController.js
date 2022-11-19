@@ -12,14 +12,14 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
     const showMovie = () => {
         MovieService.showMovie(id)
-        .then((resp) => {
-            $scope.movieData = resp.data
-            console.log(id);
-            console.log($scope.movieData);
-        })
-        .catch((e) => {
-            console.log(e);
-        })
+            .then((resp) => {
+                $scope.movieData = resp.data
+                console.log(id);
+                console.log($scope.movieData);
+            })
+            .catch((e) => {
+                console.log(e);
+            })
     }
 
     const openSwal = fileParams => {
@@ -42,15 +42,19 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                         imageAlt: 'The uploaded picture'
                     })
                 }).catch(error => {
+                    console.log(reader, 'reader');
+                    console.log(JSON.stringify(file, null, 4))
+                    console.log(file);
+                    console.log('OPAAA');
                     console.log(error)
                 })
                 reader.onload = (e) => {
                     const srcData = e.target.result;
-                    console.log(srcData, 'kjasgk')
+                    console.log(srcData, 'srcData')
                     newImage.src = srcData;
                     $scope.formCar.img = srcData;
 
-                    console.log(e, 'wegv')
+                    console.log(e, 'E')
                     reader.readAsDataURL(file)
                     console.log(data, 'data')
 
@@ -66,7 +70,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         MovieService.manageMovie($scope.movieData).then(resp => {
             openSwal(resp.data.id)
         }).catch(e => {
-            console.log(e, 'err9r');
+            // console.log(e, 'err9r');
             const confirmation = Swal.fire({
                 title: 'dados inválidos',
                 icon: 'error',

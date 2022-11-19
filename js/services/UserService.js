@@ -26,5 +26,8 @@ myApp.service("UserService", function ($http) {
         }
         return $http.get(`${baseUrl}users/`)
     }
+    this.deleteOtherUser = (id) => {
+        return $http.delete(`${baseUrl}users/${id}`) 
+    }
 
 });

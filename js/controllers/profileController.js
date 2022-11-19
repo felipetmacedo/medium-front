@@ -13,6 +13,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         UserService.allUsers($scope.buscarUsers)
             .then(resp => {
                 $scope.users = resp.data
+                console.log($scope.users);
             }).catch((e) => {
                 console.log(e);
             })
@@ -87,7 +88,35 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         })
     }
 
+    const deleteOtherUser = () => {
+        Swal.fire({
+            title: 'are you sure?',
+            text: "you won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'grey',
+            cancelButtonColor: 'black',
+            confirmButtonText: 'delete',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return UserService.deleteOtherUser(id)
+                    .then(() => {
+                        $state.go('profile')
+                        Swal.fire(
+                            'Deleted!',
+                            'Your user has been deleted.',
+                            'success'
+                        )
+                    }).catch((e) => {
+                        console.log(e);
+                    })
+            }
+        })
 
+    }
+
+    // $scope.everyUser = everyUser
+    $scope.deleteOtherUser = deleteOtherUser
     $scope.logOut = logOut
     $scope.buscaUsers = everyUser
     $scope.deleteUser = deleteUser

@@ -4,11 +4,12 @@
         <div class="buttons-header">
             <div class="input-container" style="margin-right: 20px; display: flex;">
                 <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="search users..." ng-model="buscarUsers"
+                <input class="search-input" type="text" style="width:16vw" placeholder="search users..." ng-model="buscarUsers"
                     ng-change="buscaUsers()"
                     uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
                     typeahead-template-url="view/customTemplate.html" typeahead-on-select="refresh(buscarUsers)">
             </div>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width:8vw" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
                 ui-sref="all-movies">return</button>
             <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
@@ -33,6 +34,8 @@
             </div>
             <button class="buttons-show-item form-control btn btn-light" style="width:fit-content"
                 ng-click="deleteUser()" ng-if="showButtons">delete user</button>
+            <button class="buttons-show-item form-control btn btn-light" style="width:fit-content"
+                ng-click="deleteOtherUser()" ng-if="isAdmin && !showButtons">delete this user</button>
         </div>
         <div class="grid-container-profile">
             <section class="grid-item" ng-repeat="watched in watcheds.allImages">

@@ -2,6 +2,16 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
 
   $scope.isAdminUser = !!$rootScope.isAdmin;
 
+  const everyUser = () => {
+    UserService.allUsers($scope.buscarUsers)
+        .then(resp => {
+            $scope.users = resp.data
+            console.log($scope.users);
+        }).catch((e) => {
+            console.log(e);
+        })
+}
+
   const index = () => {
     MovieService.getCovers($scope.buscarFilmes)
       .then(resp => {
@@ -29,6 +39,7 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
     })
   }
 
+  $scope.buscaUsers = everyUser
   $scope.logOut = logOut
   $scope.busca = index
   index()

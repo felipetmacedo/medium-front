@@ -4,9 +4,10 @@
         <div class="buttons-header">
             <div class="input-container" style="margin-right: 20px;">
                 <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" placeholder="search movies..." ng-model="buscarFilmes"
+                <input class="search-input" style="width:16vw" type="text" placeholder="search movies..." ng-model="buscarFilmes"
                     ng-change="busca()" ng-model-options="{ debounce: 500 }">
             </div>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width:8vw" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
                 ui-sref="all-movies">movies</button>
             <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"

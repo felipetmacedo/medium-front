@@ -66,6 +66,13 @@ myApp.config(function ($stateProvider, $httpProvider) {
             controller: 'manageMovieController',
             onEnter: isAuthorized
         })
+        .state({
+            name: 'every-user',
+            url: '/profile/all',
+            templateUrl: 'view/every-user.html',
+            controller: 'everyUserController',
+            onEnter: isAuthorized
+        })
 })
 
 const isAuthorized = ($state, $rootScope) => {
