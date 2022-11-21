@@ -5,7 +5,7 @@
             <div class="input-container" style="margin-right: 20px; display: flex;">
                 <img src="../assets/images/search.svg">
                 <input class="search-input" type="text" style="width:16vw" placeholder="search users..."
-                    ng-model="buscarUsers" ng-change="buscaUsers()"
+                    ng-model="buscarUsers" ng-change="buscaUsers()" ng-model-options="{ debounce: 500 }"
                     uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
                     typeahead-template-url="view/customTemplate.html" typeahead-on-select="refresh(buscarUsers)">
             </div>

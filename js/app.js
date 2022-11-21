@@ -73,6 +73,14 @@ myApp.config(function ($stateProvider, $httpProvider) {
             controller: 'everyUserController',
             onEnter: isAuthorized
         })
+
+        // .state({
+        //     name: 'teste',
+        //     url: '/teste',
+        //     templateUrl: 'view/teste.html',
+        //     controller: 'testeController',
+        //     onEnter: isAuthorized
+        // })
 })
 
 const isAuthorized = ($state, $rootScope) => {

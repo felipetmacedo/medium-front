@@ -1,7 +1,38 @@
 myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService', '$state', function ($rootScope, $scope, MovieService, $state) {
 
+    $scope.formStore = {}
     const id = $state.params.id;
     $scope.isAdminUser = !!$rootScope.isAdmin;
+    $scope.idEdit = $state.params.id
+
+    $scope.encodeImageFileAsURL = function (element) {
+        if (element.files.length > 0 || element.files.length < 2) {
+          const fileToLoad = element.files[0];
+          const fileName = element.files[0].name;
+          const fileReader = new FileReader();
+    
+          fileReader.onload = function (fileLoadedEvent) {
+            const srcData = fileLoadedEvent.target.result;
+    
+            const newImage = document.createElement("img");
+            newImage.src = srcData;
+            $scope.formStore.link_image = srcData;
+            console.log($scope.formStore.link_image, '$scope.formStore.link_image')
+            MovieService.addCover({
+                img: $scope.formStore.link_image,
+                name: fileName
+            }, $state.params.id).then(() => {
+                console.log('sucesso')
+            }).catch(error => console.log(error))
+    
+            document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+          };
+    
+          fileReader.readAsDataURL(fileToLoad);
+        }
+      };
+
+    
 
     const init = () => {
         $scope.title = $state.params.id ? 'Edit a movie' : 'Add a movie';
@@ -14,7 +45,6 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         MovieService.showMovie(id)
             .then((resp) => {
                 $scope.movieData = resp.data
-                console.log(id);
                 console.log($scope.movieData);
             })
             .catch((e) => {
@@ -22,52 +52,16 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             })
     }
 
-    const openSwal = fileParams => {
-        Swal.fire({
-            title: 'Select image',
-            input: 'file',
-            inputAttributes: {
-                'accept': 'image/*',
-                'aria-label': 'Upload your profile picture'
-            },
-        }).then(file => {
-            console.log(file, 'file')
-            if (file) {
-                const reader = new FileReader()
-
-                MovieService.addCover(file.value, fileParams).then(() => {
-                    Swal.fire({
-                        title: 'Your uploaded picture',
-                        imageUrl: file.target.result,
-                        imageAlt: 'The uploaded picture'
-                    })
-                }).catch(error => {
-                    console.log(reader, 'reader');
-                    console.log(JSON.stringify(file, null, 4))
-                    console.log(file);
-                    console.log('OPAAA');
-                    console.log(error)
-                })
-                reader.onload = (e) => {
-                    const srcData = e.target.result;
-                    console.log(srcData, 'srcData')
-                    newImage.src = srcData;
-                    $scope.formCar.img = srcData;
-
-                    console.log(e, 'E')
-                    reader.readAsDataURL(file)
-                    console.log(data, 'data')
-                }
-            }
-        })
-    }
+    
 
     const createMovie = () => {
         console.log('criou')
-        MovieService.manageMovie($scope.movieData).then(resp => {
-            openSwal(resp.data.id)
+        MovieService.manageMovie($scope.movieData).then(({data}) => {
+            console.log(data)
+            $state.go('update-movie', {
+                id: data.id
+            })
         }).catch(e => {
-            // console.log(e, 'err9r');
             const confirmation = Swal.fire({
                 title: 'dados inválidos',
                 icon: 'error',
