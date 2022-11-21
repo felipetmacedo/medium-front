@@ -28,6 +28,7 @@
                   <th class="table-header-item">email</th>
                   <th class="table-header-item">total time</th>
                   <th class="table-header-item">most watched genre</th>
+                  <th class="table-header-item"></th>
               </tr>
               <tr ng-repeat="user in users | orderBy: 'id'| filter: buscarUsers" >
                   <td class="td-item">{{user.id}}</td>
@@ -36,6 +37,7 @@
                   <td class="td-item">{{user.email}}</td>
                   <td class="td-item">{{user.total_time}}  minutes</td>
                   <td class="td-item">{{user.most_watched_genre}}</td>
+                  <td style="text-align: center;" ng-click="refresh(user)"><img src="../assets/images/person-circle.svg"></td>
               </tr>
           </table>
       </div>

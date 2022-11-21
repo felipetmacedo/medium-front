@@ -6,7 +6,7 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
     const init = () => {
         everyUser()
     }
-
+    
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
             .then(resp => {
@@ -33,6 +33,11 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
         })
     }
 
+    const refresh = user => {
+        $location.path(`/profile/${user.id}`)
+    }
+
+    $scope.refresh = refresh;
     $scope.logOut = logOut
     $scope.users = everyUser
 

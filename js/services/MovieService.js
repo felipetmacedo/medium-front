@@ -31,8 +31,6 @@ myApp.service("MovieService", function ($http) {
         return  $http.post(`${baseUrl}movies/`, data)
     }
     this.addCover = (data, id) => {
-        console.log(data)
-        console.log(id, 'id')
         return  $http.post(`${baseUrl}covers/${id}`,{file: data})
     }
     this.showMovie = (id) => {

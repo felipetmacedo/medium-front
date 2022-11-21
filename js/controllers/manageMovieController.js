@@ -29,7 +29,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             inputAttributes: {
                 'accept': 'image/*',
                 'aria-label': 'Upload your profile picture'
-            }
+            },
         }).then(file => {
             console.log(file, 'file')
             if (file) {
