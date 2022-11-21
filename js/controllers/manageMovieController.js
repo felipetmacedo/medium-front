@@ -57,11 +57,8 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                     console.log(e, 'E')
                     reader.readAsDataURL(file)
                     console.log(data, 'data')
-
                 }
-
             }
-
         })
     }
 

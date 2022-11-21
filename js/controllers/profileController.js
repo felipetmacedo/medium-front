@@ -23,7 +23,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         UserService.profile(id)
             .then(resp => {
                 $scope.user = resp.data
-                console.log(resp);
+                console.log(resp.data);
 
             })
             .catch((err) => {
@@ -88,6 +88,22 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         })
     }
 
+    const makeAdmin = () => {
+        const newAdmin = {admin: true}
+        UserService.makeAdmin(newAdmin,id)
+        .then((resp) => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }).catch( e => {
+            console.log(e);
+        })
+    }
+
     const deleteOtherUser = () => {
         Swal.fire({
             title: 'are you sure?',
@@ -115,7 +131,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
 
     }
 
-    // $scope.everyUser = everyUser
+    $scope.makeAdmin = makeAdmin
     $scope.deleteOtherUser = deleteOtherUser
     $scope.logOut = logOut
     $scope.buscaUsers = everyUser

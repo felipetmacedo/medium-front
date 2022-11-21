@@ -29,5 +29,8 @@ myApp.service("UserService", function ($http) {
     this.deleteOtherUser = (id) => {
         return $http.delete(`${baseUrl}users/${id}`) 
     }
+    this.makeAdmin = (data, id) => {
+        return $http.put(`${baseUrl}users/${id}`, data) 
+    }
 
 });
