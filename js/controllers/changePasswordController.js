@@ -13,7 +13,7 @@ myApp.controller("changePasswordController", ['$scope', "RecoveryService", "Aler
         .then(() => {
           $scope.isTokenValid = true;
         }).catch((e) => {
-          AlertMessage.error("TOKEN EXPIRADO!")
+          AlertMessage.error("expired token")
           $state.go('login');
         });
     };
@@ -45,10 +45,10 @@ myApp.controller("changePasswordController", ['$scope', "RecoveryService", "Aler
       RecoveryService.changePassword(token, $scope.form)
         .then(() => {
           AlertMessage.success("Acesso redefinido com sucesso!")
-          $state.go("login");
-        }).catch(() => {
+        }).catch((e) => {
+          console.log(e);
           AlertMessage.error("Erro ao redefinir acesso!")
-        });
+        }).finally(() =>  $state.go("login"));
   
     };
   

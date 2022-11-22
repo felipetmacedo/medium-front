@@ -12,7 +12,13 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
             .then(resp => {
                 $scope.users = resp.data
             }).catch((e) => {
-                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
     }
 

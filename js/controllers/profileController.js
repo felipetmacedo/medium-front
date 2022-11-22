@@ -1,4 +1,4 @@
-myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$state", "$location", function ($rootScope,$scope, UserService, $state, $location) {
+myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$state", "$location", function ($rootScope, $scope, UserService, $state, $location) {
     const id = $state.params.id;
 
     $scope.isAdminUser = !!$rootScope.isAdmin;
@@ -13,9 +13,15 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         UserService.allUsers($scope.buscarUsers)
             .then(resp => {
                 $scope.users = resp.data
-                
+
             }).catch((e) => {
-                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
     }
 
@@ -26,7 +32,14 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
 
             })
             .catch((err) => {
-                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
             })
     }
 
@@ -36,7 +49,14 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                 $scope.watcheds = resp.data
             })
             .catch((err) => {
-                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
             })
     }
 
@@ -61,7 +81,13 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                             'success'
                         )
                     }).catch((e) => {
-                       
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'an error ocurred',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
                     })
             }
         })
@@ -88,19 +114,26 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
     }
 
     const makeAdmin = () => {
-        const newAdmin = {admin: true}
-        UserService.makeAdmin(newAdmin,id)
-        .then((resp) => {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }).catch( e => {
+        const newAdmin = { admin: true }
+        UserService.makeAdmin(newAdmin, id)
+            .then((resp) => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }).catch(e => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
 
-        })
+            })
     }
 
     const deleteOtherUser = () => {
@@ -123,7 +156,13 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                             'success'
                         )
                     }).catch((e) => {
-                       
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'an error ocurred',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
                     })
             }
         })

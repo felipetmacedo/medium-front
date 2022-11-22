@@ -15,7 +15,13 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         $scope.cover = resp.data
       })
       .catch((err) => {
-        
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'an error ocurred',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
   }
 
@@ -48,7 +54,13 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         $state.go('all-movies')
 
       }).catch((err) => {
-        
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'an error ocurred',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
     })
   }
@@ -74,7 +86,13 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
             })
             $state.go('profile')
           }).catch((err) => {
-            
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'an error ocurred',
+              showConfirmButton: false,
+              timer: 1500
+            })
           })
       }
     })
@@ -106,7 +124,13 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
 
       })
       .catch((err) => {
-        
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'an error ocurred',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
   }
 
@@ -133,10 +157,22 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         data
       )
       .then((resp) => {
-        
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'movie updated',
+          showConfirmButton: false,
+          timer: 1000
+      })
       })
       .catch((err) => {
-          
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'an error ocurred',
+          showConfirmButton: false,
+          timer: 1500
+        })
         })
     })
   }
@@ -162,7 +198,13 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
             })
             $state.go('all-movies')
           }).catch((err) => {
-            
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'an error ocurred',
+              showConfirmButton: false,
+              timer: 1500
+            })
           })
       }
     })

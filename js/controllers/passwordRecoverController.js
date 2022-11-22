@@ -26,7 +26,8 @@ myApp.controller("passwordRecoverController", ['$scope', "RecoveryService", "Ale
         .then(() => {
           $state.go('login');
           AlertMessage.success("Solicitação enviada com sucesso!")
-        }).catch(() => {
+        }).catch((e) => {
+          console.log(e);
           AlertMessage.error("Erro ao enviar sua solicitação!")
         });
       

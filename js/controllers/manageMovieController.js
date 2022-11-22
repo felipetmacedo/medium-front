@@ -24,7 +24,13 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 }, $state.params.id).then(() => {
                     
                 }).catch((e) => {
-
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'an error ocurred',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 })
 
                 document.getElementById("imgTest").innerHTML = newImage.outerHTML;
@@ -50,7 +56,12 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         
             })
             .catch((e) => {
-
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
     }
 
@@ -87,7 +98,13 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 })
                 $state.go('all-movies')
             }).catch((e) => {
-
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
     }
 
@@ -97,7 +114,13 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 $state.go('all-movies')
             })
             .catch((e) => {
-
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
 
     }

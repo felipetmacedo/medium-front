@@ -12,7 +12,7 @@
     background-color: rgba(255, 255, 255, 0.036);
     border-radius: 0.25rem;
     height: 60vh;
-    width: 28vw;
+    width: 33vw;
     margin-left: 5vw;
 }
 
@@ -37,8 +37,8 @@
 .grid-container-profile {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(10, 6.8vw);
-    margin-left: 1vw;
+    grid-template-columns: repeat(9, 6.8vw);
+    margin-left: 10px;
 }
 
 #card-img-profile{

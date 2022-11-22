@@ -9,7 +9,13 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
                 $state.go('profile')
             })
             .catch((e) => {
-                
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'an error ocurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
     }
     const showUser = () => {

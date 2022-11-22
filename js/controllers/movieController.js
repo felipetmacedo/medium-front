@@ -7,7 +7,13 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
         .then(resp => {
             $scope.users = resp.data
         }).catch((e) => {
-            
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'an error ocurred',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
 }
 
@@ -17,7 +23,13 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
         $scope.covers = resp.data
       })
       .catch((e) => {
-        
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'an error ocurred',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
 
   }
