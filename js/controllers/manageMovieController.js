@@ -7,32 +7,32 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
     $scope.encodeImageFileAsURL = function (element) {
         if (element.files.length > 0 || element.files.length < 2) {
-          const fileToLoad = element.files[0];
-          const fileName = element.files[0].name;
-          const fileReader = new FileReader();
-    
-          fileReader.onload = function (fileLoadedEvent) {
-            const srcData = fileLoadedEvent.target.result;
-    
-            const newImage = document.createElement("img");
-            newImage.src = srcData;
-            $scope.formStore.link_image = srcData;
-            console.log($scope.formStore.link_image, '$scope.formStore.link_image')
-            MovieService.addCover({
-                img: $scope.formStore.link_image,
-                name: fileName
-            }, $state.params.id).then(() => {
-                console.log('sucesso')
-            }).catch(error => console.log(error))
-    
-            document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-          };
-    
-          fileReader.readAsDataURL(fileToLoad);
-        }
-      };
+            const fileToLoad = element.files[0];
+            const fileName = element.files[0].name;
+            const fileReader = new FileReader();
 
-    
+            fileReader.onload = function (fileLoadedEvent) {
+                const srcData = fileLoadedEvent.target.result;
+
+                const newImage = document.createElement("img");
+                newImage.src = srcData;
+                $scope.formStore.link_image = srcData;
+                console.log($scope.formStore.link_image, '$scope.formStore.link_image')
+                MovieService.addCover({
+                    img: $scope.formStore.link_image,
+                    name: fileName
+                }, $state.params.id).then(() => {
+                    console.log('sucesso')
+                }).catch(error => console.log(error))
+
+                document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+            };
+
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    };
+
+
 
     const init = () => {
         $scope.title = $state.params.id ? 'Edit a movie' : 'Add a movie';
@@ -52,11 +52,11 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             })
     }
 
-    
+
 
     const createMovie = () => {
         console.log('criou')
-        MovieService.manageMovie($scope.movieData).then(({data}) => {
+        MovieService.manageMovie($scope.movieData).then(({ data }) => {
             console.log(data)
             $state.go('update-movie', {
                 id: data.id
