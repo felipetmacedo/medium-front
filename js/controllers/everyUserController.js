@@ -11,7 +11,6 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
         UserService.allUsers($scope.buscarUsers)
             .then(resp => {
                 $scope.users = resp.data
-                console.log($scope.users);
             }).catch((e) => {
                 console.log(e);
             })

@@ -6,7 +6,6 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
     UserService.allUsers($scope.buscarUsers)
         .then(resp => {
             $scope.users = resp.data
-            console.log($scope.users);
         }).catch((e) => {
             console.log(e);
         })

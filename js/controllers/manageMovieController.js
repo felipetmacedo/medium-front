@@ -17,12 +17,12 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 const newImage = document.createElement("img");
                 newImage.src = srcData;
                 $scope.formStore.link_image = srcData;
-                console.log($scope.formStore.link_image, '$scope.formStore.link_image')
+                
                 MovieService.addCover({
                     img: $scope.formStore.link_image,
                     name: fileName
                 }, $state.params.id).then(() => {
-                    console.log('sucesso')
+                    
                 }).catch(error => console.log(error))
 
                 document.getElementById("imgTest").innerHTML = newImage.outerHTML;
@@ -45,7 +45,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         MovieService.showMovie(id)
             .then((resp) => {
                 $scope.movieData = resp.data
-                console.log($scope.movieData);
+        
             })
             .catch((e) => {
                 console.log(e);
@@ -55,9 +55,8 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
 
     const createMovie = () => {
-        console.log('criou')
+        
         MovieService.manageMovie($scope.movieData).then(({ data }) => {
-            console.log(data)
             $state.go('update-movie', {
                 id: data.id
             })
@@ -93,7 +92,6 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
     const editMovie = () => {
         MovieService.manageMovie($scope.movieData, id)
             .then((data) => {
-                console.log(data);
                 $state.go('all-movies')
             })
             .catch((e) => {

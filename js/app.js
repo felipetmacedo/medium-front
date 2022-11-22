@@ -73,14 +73,18 @@ myApp.config(function ($stateProvider, $httpProvider) {
             controller: 'everyUserController',
             onEnter: isAuthorized
         })
-
-        // .state({
-        //     name: 'teste',
-        //     url: '/teste',
-        //     templateUrl: 'view/teste.html',
-        //     controller: 'testeController',
-        //     onEnter: isAuthorized
-        // })
+        .state({
+            name: 'recover',
+            url: '/password/recover',
+            templateUrl: 'view/password-recover.html',
+            controller: 'passwordRecoverController',
+        })
+        .state({
+            name: "change-password",
+            url: "/change-password",
+            templateUrl: "view/change-password.html",
+            controller: "changePasswordController",
+          })
 })
 
 const isAuthorized = ($state, $rootScope) => {

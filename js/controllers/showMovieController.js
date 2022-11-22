@@ -46,7 +46,6 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
           timer: 500
         })
         $state.go('all-movies')
-        console.log(id);
 
       }).catch((err) => {
         console.log(err);
@@ -74,7 +73,6 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
               timer: 1000
             })
             $state.go('profile')
-            console.log(id);
           }).catch((err) => {
             console.log(err);
           })
@@ -135,17 +133,15 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         data
       )
       .then((resp) => {
-        console.log('oi aqui');
+        console.log(resp);
       })
       .catch((err) => {
-          console.log(id);
           console.log(err);
         })
     })
   }
 
   const deleteMovie = () => {
-    console.log(id);
     Swal.fire({
       title: 'delete movie?',
       icon: 'warning',
@@ -165,7 +161,6 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
               timer: 1000
             })
             $state.go('all-movies')
-            console.log(id);
           }).catch((err) => {
             console.log(err);
           })

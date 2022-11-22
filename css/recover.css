@@ -1,0 +1,22 @@
+.full-Logo-recover {
+    width: 9vw;
+    margin-bottom: 3vh;
+}
+
+.container-recover {
+    display: flex;
+    border-radius: 15px;
+    background-color: #3213635a;
+    height: 50vh;
+    width: 30vw;
+    margin: auto;
+    margin-top: 20vh;
+    align-items: center;
+    justify-content: center;
+    border: #40187550;
+    border-style: solid;
+    border-width: 3px;
+    color: white;
+    font-weight: bold;
+
+}

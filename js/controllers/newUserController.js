@@ -26,7 +26,6 @@ myApp.controller("newUserController", ['$scope', "UserService", "$state", functi
                     return;
                 }
                 console.log(e)
-                console.log('opa, ja existe');
                 $scope.err = true;
                 localStorage.clear()
                 $scope.userData.username = '';

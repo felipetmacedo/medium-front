@@ -13,7 +13,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         UserService.allUsers($scope.buscarUsers)
             .then(resp => {
                 $scope.users = resp.data
-                console.log($scope.users);
+                
             }).catch((e) => {
                 console.log(e);
             })
@@ -23,7 +23,6 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
         UserService.profile(id)
             .then(resp => {
                 $scope.user = resp.data
-                console.log(resp.data);
 
             })
             .catch((err) => {

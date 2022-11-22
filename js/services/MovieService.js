@@ -18,7 +18,6 @@ myApp.service("MovieService", function ($http) {
         return $http.get(`${baseUrl}watched/${movie_id}`)
     }
     this.updateWatched = (movie_id, data) => {
-        console.log(movie_id, data)
         return $http.put(`${baseUrl}watched/${movie_id}`, data)
     }
     this.deleteMovie = (id) => {
@@ -31,7 +30,6 @@ myApp.service("MovieService", function ($http) {
         return  $http.post(`${baseUrl}movies/`, data)
     }
     this.addCover = (data, id) => {
-        console.log(data)
         return  $http.post(`${baseUrl}covers/${id}`,data)
     }
     this.showMovie = (id) => {
