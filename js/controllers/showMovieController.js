@@ -133,7 +133,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         data
       )
       .then((resp) => {
-        console.log(resp);
+        
       })
       .catch((err) => {
           
