@@ -15,7 +15,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                 $scope.users = resp.data
                 
             }).catch((e) => {
-                console.log(e);
+                
             })
     }
 
@@ -26,7 +26,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
 
             })
             .catch((err) => {
-                console.log(err);
+                
             })
     }
 
@@ -36,7 +36,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                 $scope.watcheds = resp.data
             })
             .catch((err) => {
-                console.log(err);
+                
             })
     }
 
@@ -61,7 +61,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                             'success'
                         )
                     }).catch((e) => {
-                        console.log(e);
+                       
                     })
             }
         })
@@ -99,7 +99,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                 timer: 1500
               })
         }).catch( e => {
-            console.log(e);
+
         })
     }
 
@@ -123,7 +123,7 @@ myApp.controller("profileController", ['$rootScope','$scope', "UserService", "$s
                             'success'
                         )
                     }).catch((e) => {
-                        console.log(e);
+                       
                     })
             }
         })

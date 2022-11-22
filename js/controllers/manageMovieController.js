@@ -23,7 +23,9 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                     name: fileName
                 }, $state.params.id).then(() => {
                     
-                }).catch(error => console.log(error))
+                }).catch((e) => {
+
+                })
 
                 document.getElementById("imgTest").innerHTML = newImage.outerHTML;
             };
@@ -48,7 +50,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         
             })
             .catch((e) => {
-                console.log(e);
+
             })
     }
 
@@ -85,7 +87,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 })
                 $state.go('all-movies')
             }).catch((e) => {
-                console.log(e);
+
             })
     }
 
@@ -95,7 +97,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 $state.go('all-movies')
             })
             .catch((e) => {
-                console.log(e);
+
             })
 
     }

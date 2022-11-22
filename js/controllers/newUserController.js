@@ -25,7 +25,7 @@ myApp.controller("newUserController", ['$scope', "UserService", "$state", functi
                 if (!confirmation.isConfirmed) {
                     return;
                 }
-                console.log(e)
+                
                 $scope.err = true;
                 localStorage.clear()
                 $scope.userData.username = '';

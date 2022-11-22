@@ -12,7 +12,7 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
             .then(resp => {
                 $scope.users = resp.data
             }).catch((e) => {
-                console.log(e);
+                
             })
     }
 

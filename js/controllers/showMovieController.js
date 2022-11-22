@@ -15,7 +15,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         $scope.cover = resp.data
       })
       .catch((err) => {
-        console.log(err);
+        
       })
   }
 
@@ -48,7 +48,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         $state.go('all-movies')
 
       }).catch((err) => {
-        console.log(err);
+        
       })
     })
   }
@@ -74,7 +74,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
             })
             $state.go('profile')
           }).catch((err) => {
-            console.log(err);
+            
           })
       }
     })
@@ -106,7 +106,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
 
       })
       .catch((err) => {
-        console.log(err);
+        
       })
   }
 
@@ -136,7 +136,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
         console.log(resp);
       })
       .catch((err) => {
-          console.log(err);
+          
         })
     })
   }
@@ -162,7 +162,7 @@ myApp.controller('showMovieController', ['$rootScope','$scope', 'MovieService', 
             })
             $state.go('all-movies')
           }).catch((err) => {
-            console.log(err);
+            
           })
       }
     })

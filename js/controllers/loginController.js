@@ -19,7 +19,7 @@ myApp.controller('loginController', ['$scope', 'LoginService', '$state', functio
                 $state.go('all-movies') //só depois
             })
             .catch((err) => {
-                console.log(err);
+                
                 const confirmation = Swal.fire({
                     title: 'Algo deu errado',
                     text: err.data && err.data.error === 'Usuario bloqueado' ? err.data.error : "Verifique as suas informações!",

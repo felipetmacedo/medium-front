@@ -7,7 +7,7 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
         .then(resp => {
             $scope.users = resp.data
         }).catch((e) => {
-            console.log(e);
+            
         })
 }
 
@@ -17,7 +17,7 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
         $scope.covers = resp.data
       })
       .catch((e) => {
-        console.log(e);
+        
       })
 
   }

@@ -9,7 +9,7 @@ myApp.controller("updateUserController", ['$scope', "UserService", "$state", fun
                 $state.go('profile')
             })
             .catch((e) => {
-                console.log(e);
+                
             })
     }
     const showUser = () => {
