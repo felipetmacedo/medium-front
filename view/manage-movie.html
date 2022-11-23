@@ -34,27 +34,30 @@
                     <label for="synopsis">synopsis</label>
                     <input class="form-control" ng-model="movieData.synopsis" ng-required="true" />
                 </div>
+                <div>
+                    <label for="cover" style="display: flex; margin-top: 10px;">cover</label>
+                    <div ng-show="!idEdit" class="input-image">
+                        <form>
+                            <form>
+                              <input  
+                                ng-required="true"
+                                ng-model="movieData.img"
+                                name="file"
+                                class="register__input-password"
+                                select-ng-files
+                                placeholder="Imagem Url"
+                                id="fileTobase64"
+                                type="file"
+                                accept="image/png, image/jpeg"
+                              />
+                              <img  id="imgTest" />
+                            </form>
+                      </form>
+                    </div>
+                </div>
                 <div class="login-container-form-item">
                     <button class="btn btn-block cadastro-button" ng-click="actionFunction()"
                         ng-disabled="!movieData.name || !movieData.director || !movieData.genre|| !movieData.time || !movieData.synopsis">Confirmar</button>
-                </div>
-                <div ng-show="idEdit" class="input-image">
-                    <form>
-                        <form>
-                          <input
-                            name="file"
-                            class="register__input-password"
-                            select-ng-files
-                            placeholder="Imagem Url"
-                            id="fileTobase64"
-                            type="file"
-                            ng-model="formCar.img"
-                            accept="image/png, image/jpeg"
-                            onchange="angular.element(this).scope().encodeImageFileAsURL(this)"
-                          />
-                          <img  id="imgTest" />
-                        </form>
-                  </form>
                 </div>
             </form>
         </div>

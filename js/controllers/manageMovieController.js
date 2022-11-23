@@ -5,7 +5,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
     $scope.isAdminUser = !!$rootScope.isAdmin;
     $scope.idEdit = $state.params.id
 
-    $scope.encodeImageFileAsURL = function (element) {
+    const loadImage = (element) => {
         if (element.files.length > 0 || element.files.length < 2) {
             const fileToLoad = element.files[0];
             const fileName = element.files[0].name;
@@ -18,12 +18,13 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
                 newImage.src = srcData;
                 $scope.formStore.link_image = srcData;
                 
-                MovieService.addCover({
+                MovieService.manageMovie({
                     img: $scope.formStore.link_image,
-                    name: fileName
-                }, $state.params.id).then(() => {
-                    
+                    covername: fileName
+                },).then(() => {
+                    console.log('ok');
                 }).catch((e) => {
+                    console.log(e, 'encode');
                     Swal.fire({
                         position: 'center',
                         icon: 'error',
@@ -40,6 +41,32 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         }
     };
 
+    const createMovie = () => {
+        console.log($scope.movieData);
+        MovieService.manageMovie($scope.movieData,{
+            img: $scope.formStore.link_image,
+            covername: movieData /// DÚVIDA 
+        })
+        loadImage($scope.movieData)
+        .then(({ data }) => {
+            console.log('ok');
+            console.log($scope.movieData);
+            $state.go('all-movies')
+        }).catch(e => {
+            console.log(e, 'opa');
+            const confirmation = Swal.fire({
+                title: 'dados inválidos',
+                icon: 'error',
+                confirmButtonColor: '#04052e',
+                timer: 500
+            });
+            if (!confirmation.isConfirmed) {
+                return;
+            }
+        })
+        
+    }
+    
 
 
     const init = () => {
@@ -65,26 +92,6 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             })
     }
 
-
-
-    const createMovie = () => {
-        
-        MovieService.manageMovie($scope.movieData).then(({ data }) => {
-            $state.go('update-movie', {
-                id: data.id
-            })
-        }).catch(e => {
-            const confirmation = Swal.fire({
-                title: 'dados inválidos',
-                icon: 'error',
-                confirmButtonColor: '#04052e',
-                timer: 500
-            });
-            if (!confirmation.isConfirmed) {
-                return;
-            }
-        })
-    }
 
     const createCover = (data) => {
         MovieService.addCover(data, id)
