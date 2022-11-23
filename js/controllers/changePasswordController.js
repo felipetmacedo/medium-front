@@ -46,7 +46,6 @@ myApp.controller("changePasswordController", ['$scope', "RecoveryService", "Aler
         .then(() => {
           AlertMessage.success("Acesso redefinido com sucesso!")
         }).catch((e) => {
-          console.log(e);
           AlertMessage.error("Erro ao redefinir acesso!")
         }).finally(() =>  $state.go("login"));
   
