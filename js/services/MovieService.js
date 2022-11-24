@@ -35,6 +35,9 @@ myApp.service("MovieService", function ($http) {
     this.showMovie = (id) => {
         return  $http.get(`${baseUrl}movies/${id}`)
     }
+    this.findAllCovers = () => {
+        return $http.get(`${baseUrl}covers/index`)
+    }
 
 
 });

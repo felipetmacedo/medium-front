@@ -30,6 +30,7 @@
         </section>
     </div>
     <div class="admin-addMovie-div">
+        <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="find-all-movies" style="margin-right: 10px;">find all movies</button>
         <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="create-movie">add movie</button>
     </div>
 </div>

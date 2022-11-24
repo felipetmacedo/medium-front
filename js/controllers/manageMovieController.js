@@ -1,14 +1,16 @@
 myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService', '$state', function ($rootScope, $scope, MovieService, $state) {
 
-    $scope.formStore = {}
+    $scope.movieData = {}
     const id = $state.params.id;
     $scope.isAdminUser = !!$rootScope.isAdmin;
     $scope.idEdit = $state.params.id
 
-    const loadImage = (element) => {
+    $scope.loadImage = function (element) {
+        console.log(element, 'element');
+        console.log(element.files, 'files');
         if (element.files.length > 0 || element.files.length < 2) {
             const fileToLoad = element.files[0];
-            const fileName = element.files[0].name;
+            const fileName = `${Date.now() * Math.random()}.png`;
             const fileReader = new FileReader();
 
             fileReader.onload = function (fileLoadedEvent) {
@@ -16,23 +18,10 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
                 const newImage = document.createElement("img");
                 newImage.src = srcData;
-                $scope.formStore.link_image = srcData;
-                
-                MovieService.manageMovie({
-                    img: $scope.formStore.link_image,
-                    covername: fileName
-                },).then(() => {
-                    console.log('ok');
-                }).catch((e) => {
-                    console.log(e, 'encode');
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: 'an error ocurred',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                })
+                $scope.movieData.img = srcData;
+                $scope.movieData.covername = fileName
+
+                console.log(fileName, 'fileName')
 
                 document.getElementById("imgTest").innerHTML = newImage.outerHTML;
             };
@@ -42,13 +31,8 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
     };
 
     const createMovie = () => {
-        console.log($scope.movieData);
-        MovieService.manageMovie($scope.movieData,{
-            img: $scope.formStore.link_image,
-            covername: movieData /// DÚVIDA 
-        })
-        loadImage($scope.movieData)
-        .then(({ data }) => {
+        MovieService.manageMovie($scope.movieData)
+        .then(() => {
             console.log('ok');
             console.log($scope.movieData);
             $state.go('all-movies')
@@ -80,7 +64,6 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
         MovieService.showMovie(id)
             .then((resp) => {
                 $scope.movieData = resp.data
-        
             })
             .catch((e) => {
                 Swal.fire({
@@ -131,7 +114,7 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             })
 
     }
-
+    
     $scope.actionFunction = $state.params.id ? editMovie : createMovie
     init()
 }])

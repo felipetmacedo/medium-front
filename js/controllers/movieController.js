@@ -31,7 +31,6 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
           timer: 1500
         })
       })
-
   }
 
   const logOut = () => {
@@ -49,7 +48,7 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
       }
     })
   }
-
+  
   $scope.buscaUsers = everyUser
   $scope.logOut = logOut
   $scope.busca = index

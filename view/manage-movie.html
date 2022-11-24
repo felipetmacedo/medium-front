@@ -34,26 +34,12 @@
                     <label for="synopsis">synopsis</label>
                     <input class="form-control" ng-model="movieData.synopsis" ng-required="true" />
                 </div>
-                <div>
-                    <label for="cover" style="display: flex; margin-top: 10px;">cover</label>
-                    <div ng-show="!idEdit" class="input-image">
-                        <form>
-                            <form>
-                              <input  
-                                ng-required="true"
-                                ng-model="movieData.img"
-                                name="file"
-                                class="register__input-password"
-                                select-ng-files
-                                placeholder="Imagem Url"
-                                id="fileTobase64"
-                                type="file"
-                                accept="image/png, image/jpeg"
-                              />
-                              <img  id="imgTest" />
-                            </form>
-                      </form>
-                    </div>
+                <div ng-show="!idEdit" class="login-container-form-item" style="justify-content: center">
+                    <label for="cover">cover</label>
+                    <input ng-required="true" onchange="angular.element(this).scope().loadImage(this)" name="file" class="form-control"
+                        select-ng-files placeholder="Imagem Url" id="fileTobase64" type="file"
+                        accept="image/png, image/jpeg"  style="padding-bottom:35px;"/>
+                    <img id="imgTest" />
                 </div>
                 <div class="login-container-form-item">
                     <button class="btn btn-block cadastro-button" ng-click="actionFunction()"

@@ -25,6 +25,13 @@ myApp.config(function ($stateProvider, $httpProvider) {
             onEnter: isAuthorized
         })
         .state({
+            name: 'find-all-movies',
+            url: '/movies/all',
+            templateUrl: 'view/find-all-movies.html',
+            controller: 'allCoversController',
+            onEnter: isAuthorized
+        })
+        .state({
             name: 'show-movie',
             url: '/movies/:id',
             templateUrl: 'view/show-movie.html',
