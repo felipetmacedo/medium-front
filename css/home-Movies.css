@@ -1,10 +1,10 @@
 #card-img {
-    height: 27vh;
-    width: 9vw;
+    height: 18vh;
+    width: 6vw;
 }
 
 .card-image {
-    padding-top: 2vh;
+    padding-top: 1vh;
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -13,34 +13,13 @@
 .grid-container {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(10, 9.8vw);
+    grid-template-columns: repeat(15, 6.6vw);
     justify-content: center;
-}
-
-.grid-item {
-    font-size: 30px;
-}
-
-.divTitle {
-    margin-top: -15px;
-    height: 55px;
-    width: 8vw;
-    background-color: #00000010;
-    justify-content: center;
-}
-
-.movieTitle {
-    margin-top: 5px;
-    font-weight: 500;
-    font-size: 12px;
-    color: white;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .divRating {
     height: fit-content;
-    width: 9vw;
+    width: 6vw;
 }
 
 .movieRating {
@@ -54,13 +33,13 @@
 
 .bestMovies-container {
     border: 1px solid rgba(255, 255, 255, 0.119);
-    padding: 1vh;
+    padding-top: 5px;
     text-align: center;
 }
 
 .bestMovies-text {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
 }

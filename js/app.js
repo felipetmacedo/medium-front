@@ -92,6 +92,12 @@ myApp.config(function ($stateProvider, $httpProvider) {
             templateUrl: "view/change-password.html",
             controller: "changePasswordController",
           })
+        .state({
+            name: "all-user-movies",
+            url: "/profile/movies",
+            templateUrl: "view/all-user-movies.html",
+            controller: "profileController",
+          })
 })
 
 const isAuthorized = ($state, $rootScope) => {

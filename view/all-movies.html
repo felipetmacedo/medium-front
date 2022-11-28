@@ -7,7 +7,7 @@
                 <input class="search-input" style="width:16vw" type="text" placeholder="search movies..." ng-model="buscarFilmes"
                     ng-change="busca()" ng-model-options="{ debounce: 500 }">
             </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width:8vw" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width:150px" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
                 ui-sref="all-movies">movies</button>
             <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
@@ -17,7 +17,7 @@
         </div>
     </header>
     <div class="bestMovies-container">
-        <h1 class="bestMovies-text">Top 20 movies:</h1>
+        <h1 class="bestMovies-text">Top 45 movies:</h1>
     </div>
     <div class="grid-container">
         <section class="grid-item" ng-repeat="cover in covers">
@@ -30,7 +30,7 @@
         </section>
     </div>
     <div class="admin-addMovie-div">
-        <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="find-all-movies" style="margin-right: 10px;">find all movies</button>
+        <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="find-all-movies" style="margin-right: 5px; width: 200px;">find all movies</button>
         <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="create-movie">add movie</button>
     </div>
 </div>

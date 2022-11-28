@@ -1,5 +1,6 @@
 myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$state", "$location", function ($rootScope, $scope, UserService, $state, $location) {
     const id = $state.params.id;
+    let button = true
 
     $scope.isAdminUser = !!$rootScope.isAdmin;
     $scope.showButtons = !$state.params.id;
@@ -9,14 +10,15 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         profile()
     }
 
+    
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
-            .then(resp => {
-                $scope.users = resp.data
+        .then(resp => {
+            $scope.users = resp.data
 
-            }).catch((e) => {
-                Swal.fire({
-                    position: 'center',
+        }).catch((e) => {
+            Swal.fire({
+                position: 'center',
                     icon: 'error',
                     title: 'an error ocurred',
                     showConfirmButton: false,
@@ -29,7 +31,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         UserService.profile(id)
             .then(resp => {
                 $scope.user = resp.data
-
+                
             })
             .catch((err) => {
                 Swal.fire({
@@ -38,14 +40,15 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
                     title: 'an error ocurred',
                     showConfirmButton: false,
                     timer: 1500
-                  })
-
+                })
+                
             })
-    }
-
-    const watched = () => {
-        UserService.watchedMovies(id)
+        }
+        
+        const watched = () => {
+            UserService.watchedMovies(id)
             .then(resp => {
+                console.log(resp);
                 $scope.watcheds = resp.data
             })
             .catch((err) => {
@@ -55,11 +58,10 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
                     title: 'an error ocurred',
                     showConfirmButton: false,
                     timer: 1500
-                  })
-
+                })
             })
-    }
-
+        }
+       
     const deleteUser = () => {
         Swal.fire({
             title: 'are you sure?',

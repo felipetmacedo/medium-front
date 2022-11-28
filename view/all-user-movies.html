@@ -1,0 +1,29 @@
+<div>
+    <header class="header">
+        <img class="full-logo-header" src="../assets/images/fullMovies.png">
+        <div class="buttons-header">
+            <div class="input-container" style="margin-right: 20px;">
+                <img src="../assets/images/search.svg">
+                <input class="search-input" style="width:16vw" type="text" placeholder="search watched movies..." ng-model="buscarWatched"
+                    ng-change="busca()" ng-model-options="{ debounce: 500 }">
+            </div>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width:8vw" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
+                ui-sref="all-movies">movies</button>
+            <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
+                style="width: 6vw;">profile</button>
+            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log
+                out</button>
+        </div>
+    </header>
+    <div class="bestMovies-container">
+        <h1 class="bestMovies-text">{{user.username}}'s movies</h1>
+    </div>
+    <div class="grid-container-profile-all">
+        <section class="grid-item-all" ng-repeat="watched in watcheds.allImages | filter: buscarWatched">
+            <a class="card-image" href="#!/movies/{{watched.movie_id}}">
+                <img id="card-img-profile-all" ng-src="../assets/covers/{{watched.filename}}">
+            </a>
+        </section>
+    </div>
+</div>
