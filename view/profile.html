@@ -9,7 +9,7 @@
                     uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
                     typeahead-template-url="view/customTemplate.html" typeahead-on-select="refresh(buscarUsers)">
             </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width:8vw"
+            <button class="buttons-header-item form-control btn btn-outline-light" style="width:150px"
                 ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
             <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
                 ui-sref="all-movies">return</button>
