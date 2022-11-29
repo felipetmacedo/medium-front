@@ -25,16 +25,16 @@
             <p class="movie-info-synopsis">{{cover.movie.synopsis}}</p>
             <div>
                 <button class="buttons-show-item form-control btn btn-outline-light"
-                    style="width:8vw;margin-right: -1vw;" ng-click="addWatched()"
+                    style="width:10vw;margin-right: -1vw;" ng-click="addWatched()"
                     ng-if="!watched && !isAdminUser">add</button>
                 <button class="buttons-show-item form-control btn btn-outline-light"
-                    style="width:8vw; margin-right: -1.5vw;" ng-click="updateWatched()"
+                    style="width:10vw; margin-right: -1.5vw;" ng-click="updateWatched()"
                     ng-if="watched && !isAdminUser">update</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width:8vw"
-                    ng-click="removeWatched()" ng-if="watched && !isAdminUser">remove</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width:10vw; margin-right: -1.5vw;"
-                     ng-show="isAdminUser" ng-click="deleteMovie()">delete the movie</button>
                 <button class="buttons-show-item form-control btn btn-outline-light" style="width:10vw"
+                    ng-click="removeWatched()" ng-if="watched && !isAdminUser">remove</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width:12vw; margin-right: -1.5vw;"
+                     ng-show="isAdminUser" ng-click="deleteMovie()">delete the movie</button>
+                <button class="buttons-show-item form-control btn btn-outline-light" style="width:12vw"
                     ng-click="goUpdateMovie()" ng-show="isAdminUser">update the movie</button>
             </div>
         </div>

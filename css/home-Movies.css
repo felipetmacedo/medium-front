@@ -1,6 +1,7 @@
 #card-img {
     height: 18vh;
     width: 6vw;
+    
 }
 
 .card-image {
@@ -8,6 +9,13 @@
     flex-direction: column;
     display: flex;
     align-items: center;
+}
+.card-image:hover {
+    padding-top: 1vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    animation: input-grow 0.15s ease-in forwards;
 }
 
 .grid-container {
@@ -56,3 +64,10 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
 }
+
+@keyframes input-grow {
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  

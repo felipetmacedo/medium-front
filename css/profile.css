@@ -47,13 +47,13 @@
 }
 
 #card-img-profile-all{
-    height: 21vh;
-    width: 7vw;
+    height: 18vh;
+    width: 6vw;
 }
 
 .grid-container-profile-all{
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(12, 8vw);
-    margin-left: 10px;
+    grid-template-columns: repeat(15, 6.6vw);
+    margin-left:10px;
 }
