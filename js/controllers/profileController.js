@@ -48,8 +48,8 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         const watched = () => {
             UserService.watchedMovies(id)
             .then(resp => {
-                console.log(resp);
                 $scope.watcheds = resp.data
+
             })
             .catch((err) => {
                 Swal.fire({

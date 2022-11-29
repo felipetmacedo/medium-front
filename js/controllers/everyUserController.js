@@ -4,6 +4,16 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
     $scope.showButtons = !$state.params.id;
 
     const init = () => {
+        if(!$scope.isAdminUser){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $state.go('all-movies')
+            return
+        }
         everyUser()
     }
     

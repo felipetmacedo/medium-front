@@ -1,5 +1,7 @@
 myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService', '$state', '$location', function ($rootScope, $scope, MovieService, $state, $location) {
 
+  $scope.isAdminUser = !!$rootScope.isAdmin;
+
   const allCovers = () => {
     MovieService.findAllCovers()
       .then(resp => {
@@ -37,7 +39,22 @@ myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService',
     $location.path(`/movies/${cover.movie.id}`)
   }
 
+  const init = () => {
+    if(!$scope.isAdminUser){
+      Swal.fire({
+          position: 'center',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
+      })
+      $state.go('all-movies')
+      return
+  }
+  allCovers()
+  }
+
   $scope.refresh = refresh
   $scope.logOut = logOut
-  allCovers()
+  init()
+
 }])

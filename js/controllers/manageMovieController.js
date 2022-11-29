@@ -54,6 +54,16 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
 
 
     const init = () => {
+        if(!$scope.isAdminUser){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $state.go('all-movies')
+            return
+        }
         $scope.title = $state.params.id ? 'Edit a movie' : 'Add a movie';
         if ($state.params.id) {
             showMovie()
@@ -114,7 +124,24 @@ myApp.controller('manageMovieController', ['$rootScope', '$scope', 'MovieService
             })
 
     }
+
+    const logOut = () => {
+        Swal.fire({
+            title: 'log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $state.go('login')
+                localStorage.clear()
+            }
+        })
+    }
     
+    $scope.logOut = logOut
     $scope.actionFunction = $state.params.id ? editMovie : createMovie
     init()
 }])
