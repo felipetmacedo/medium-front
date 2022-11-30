@@ -5,10 +5,12 @@ myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService',
   const allCovers = () => {
     MovieService.findAllCovers()
       .then(resp => {
+        $scope.loading = false
         console.log(resp);
         $scope.covers = resp.data
       })
       .catch((e) => {
+        $scope.loading =  false
         Swal.fire({
           position: 'center',
           icon: 'error',
@@ -20,6 +22,7 @@ myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService',
   }
 
   const logOut = () => {
+    $scope.loading = false
     Swal.fire({
       title: 'log out?',
       icon: 'warning',
@@ -28,6 +31,7 @@ myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService',
       cancelButtonColor: '#d33',
       confirmButtonText: 'yes'
     }).then((result) => {
+      $scope.loading = false
       if (result.isConfirmed) {
         $state.go('login')
         localStorage.clear()
@@ -36,10 +40,12 @@ myApp.controller('allCoversController', ['$rootScope', '$scope', 'MovieService',
   }
 
   const refresh = cover => {
+    $scope.loading = false
     $location.path(`/movies/${cover.movie.id}`)
   }
 
   const init = () => {
+    $scope.loading = true
     if(!$scope.isAdminUser){
       Swal.fire({
           position: 'center',

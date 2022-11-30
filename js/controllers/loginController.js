@@ -16,6 +16,7 @@ myApp.controller('loginController', ['$scope', 'LoginService', '$state', functio
                 $scope.user.email = '';
                 $scope.user.password = '';
 
+                
                 $state.go('all-movies') //só depois
             })
             .catch((err) => {

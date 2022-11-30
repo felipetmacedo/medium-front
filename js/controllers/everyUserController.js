@@ -1,9 +1,10 @@
-myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "$state", "$location", function ($rootScope,$scope, UserService, $state, $location) {
-
+myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "$state", "$location", '$timeout', function ($rootScope,$scope, UserService, $state, $location, $timeout) {
+    
     $scope.isAdminUser = !!$rootScope.isAdmin;
     $scope.showButtons = !$state.params.id;
 
     const init = () => {
+        $scope.loading = true
         if(!$scope.isAdminUser){
             Swal.fire({
                 position: 'center',
@@ -19,9 +20,13 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
     
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
-            .then(resp => {
+        .then(resp => {
                 $scope.users = resp.data
+                $timeout(() => {
+                    $scope.loading = false
+                }, 500)
             }).catch((e) => {
+                $scope.loading = false
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
@@ -40,7 +45,9 @@ myApp.controller("everyUserController", ['$rootScope','$scope', "UserService", "
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'yes'
-        }).then((result) => {
+        })
+        .then((result) => {
+            $scope.loading = false
             if (result.isConfirmed) {
                 $state.go('login')
                 localStorage.clear()

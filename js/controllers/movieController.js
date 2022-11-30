@@ -2,9 +2,14 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
 
   $scope.isAdminUser = !!$rootScope.isAdmin;
 
+  const init = () => {
+    $scope.loading = true
+  }
+
   const everyUser = () => {
     UserService.allUsers($scope.buscarUsers)
         .then(resp => {
+          $scope.loading = false
             $scope.users = resp.data
         }).catch((e) => {
           Swal.fire({
@@ -14,15 +19,18 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
             showConfirmButton: false,
             timer: 1500
           })
+          $scope.loading = false
         })
 }
 
   const index = () => {
     MovieService.getCovers($scope.buscarFilmes)
       .then(resp => {
+        $scope.loading = false
         $scope.covers = resp.data
       })
       .catch((e) => {
+        $scope.loading = false
         Swal.fire({
           position: 'center',
           icon: 'error',
@@ -53,4 +61,5 @@ myApp.controller('movieController', ['$rootScope','$scope', 'MovieService', '$st
   $scope.logOut = logOut
   $scope.busca = index
   index()
+  init()
 }])
