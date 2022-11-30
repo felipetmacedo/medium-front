@@ -1,11 +1,11 @@
-myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$state", "$location", function ($rootScope, $scope, UserService, $state, $location) {
+myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$state", "$location", "$timeout", function ($rootScope, $scope, UserService, $state, $location, $timeout) {
     const id = $state.params.id;
-    let button = true
-
+    
     $scope.isAdminUser = !!$rootScope.isAdmin;
     $scope.showButtons = !$state.params.id;
 
     const init = () => {
+        $scope.loading = true
         watched()
         profile()
     }
@@ -14,9 +14,11 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
     const everyUser = () => {
         UserService.allUsers($scope.buscarUsers)
         .then(resp => {
+            $scope.loading = false
             $scope.users = resp.data
 
         }).catch((e) => {
+            $scope.loading = false
             Swal.fire({
                 position: 'center',
                     icon: 'error',
@@ -29,11 +31,15 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
 
     const profile = () => {
         UserService.profile(id)
-            .then(resp => {
+        .then(resp => {
+            $timeout(() => {
+                $scope.loading = false
+            }, 500)
                 $scope.user = resp.data
                 
             })
             .catch((err) => {
+                $scope.loading = false
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
@@ -48,10 +54,14 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         const watched = () => {
             UserService.watchedMovies(id)
             .then(resp => {
+                $timeout(() => {
+                    $scope.loading = false
+                }, 500)
                 $scope.watcheds = resp.data
 
             })
             .catch((err) => {
+                $scope.loading = false
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
@@ -63,6 +73,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         }
        
     const deleteUser = () => {
+        $scope.loading = false
         Swal.fire({
             title: 'are you sure?',
             text: "you won't be able to revert this!",
@@ -72,6 +83,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
             cancelButtonColor: 'black',
             confirmButtonText: 'delete',
         }).then((result) => {
+            $scope.loading = false
             if (result.isConfirmed) {
                 return UserService.deleteUser()
                     .then(() => {
@@ -83,6 +95,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
                             'success'
                         )
                     }).catch((e) => {
+                        $scope.loading = false
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
@@ -96,10 +109,12 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
     }
 
     const refresh = user => {
+        $scope.loading = false
         $location.path(`/profile/${user.id}`)
     }
 
     const logOut = () => {
+        $scope.loading = false
         Swal.fire({
             title: 'log out?',
             icon: 'warning',
@@ -108,6 +123,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
             cancelButtonColor: '#d33',
             confirmButtonText: 'yes'
         }).then((result) => {
+            $scope.loading = false
             if (result.isConfirmed) {
                 $state.go('login')
                 localStorage.clear()
@@ -119,6 +135,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
         const newAdmin = { admin: true }
         UserService.makeAdmin(newAdmin, id)
             .then((resp) => {
+                $scope.loading = false
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -127,6 +144,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
                     timer: 1500
                 })
             }).catch(e => {
+                $scope.loading = false
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
@@ -148,6 +166,7 @@ myApp.controller("profileController", ['$rootScope', '$scope', "UserService", "$
             cancelButtonColor: 'black',
             confirmButtonText: 'delete',
         }).then((result) => {
+            $scope.loading = false
             if (result.isConfirmed) {
                 return UserService.deleteOtherUser(id)
                     .then(() => {
