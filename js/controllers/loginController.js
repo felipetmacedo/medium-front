@@ -16,7 +16,7 @@ myApp.controller("loginController", [
           $scope.user.email = "";
           $scope.user.password = "";
 
-          $state.go("all-movies");
+          $state.go("home");
         })
         .catch((err) => {
           const confirmation = Swal.fire({

@@ -1,4 +1,4 @@
-myApp.controller("movieController", [
+myApp.controller("homeController", [
   "$rootScope",
   "$scope",
   "MovieService",

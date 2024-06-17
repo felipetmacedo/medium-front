@@ -18,17 +18,10 @@ myApp.config(function ($stateProvider, $httpProvider) {
       controller: "newUserController",
     })
     .state({
-      name: "all-movies",
-      url: "/movies",
-      templateUrl: "view/all-movies.html",
-      controller: "movieController",
-      onEnter: isAuthorized,
-    })
-    .state({
-      name: "find-all-movies",
-      url: "/movies/all",
-      templateUrl: "view/find-all-movies.html",
-      controller: "allCoversController",
+      name: "home",
+      url: "/home",
+      templateUrl: "view/home.html",
+      controller: "homeController",
       onEnter: isAuthorized,
     })
     .state({
