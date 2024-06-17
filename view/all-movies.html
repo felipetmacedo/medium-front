@@ -1,39 +1,58 @@
 <div class="gif-div" ng-show="loading">
-    <img class="gif-image" src="../assets/images/loading.gif">
+  <img class="gif-image" src="../assets/images/loading.gif" />
 </div>
 <div ng-show="!loading ">
-    <header class="header">
-        <img class="full-logo-header" src="../assets/images/fullMovies.png">
-        <div class="buttons-header">
-            <div class="input-container" style="margin-right: 20px;">
-                <img src="../assets/images/search.svg">
-                <input class="search-input" style="width:16vw" type="text" placeholder="search movies..." ng-model="buscarFilmes"
-                    ng-change="busca()" ng-model-options="{ debounce: 500 }">
-            </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width:150px" ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
-                ui-sref="all-movies">movies</button>
-            <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
-                style="width: 6vw;">profile</button>
-            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log
-                out</button>
+  <header class="header">
+    <img class="full-logo-header" src="../assets/images/fullMovies.png" />
+    <div class="buttons-header">
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        style="width: 6vw"
+        ui-sref="all-movies"
+        ng-if="!isUserLoggedIn"
+      >
+        Login
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        ui-sref="profile"
+        style="width: 6vw"
+        ng-if="!isUserLoggedIn"
+      >
+        Cadastrar
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-primary"
+        style="width: 6vw"
+        ng-click="logOut()"
+      >
+        Log Out
+      </button>
+    </div>
+  </header>
+  <div class="grid-container">
+    <section class="grid-item" ng-repeat="cover in covers">
+      <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
+        <img id="card-img" ng-src="../assets/covers/{{cover.filename}}" />
+        <div class="divRating">
+          <p class="movieRating">{{cover.movie.rating| number:1 }}</p>
         </div>
-    </header>
-    <div class="bestMovies-container">
-        <h1 class="bestMovies-text">Top 45 movies:</h1>
-    </div>
-    <div class="grid-container">
-        <section class="grid-item" ng-repeat="cover in covers">
-            <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
-                <img id="card-img" ng-src="../assets/covers/{{cover.filename}}">
-                <div class="divRating">
-                    <p class="movieRating">{{cover.movie.rating| number:1 }}</p>
-                </div>
-            </a>
-        </section>
-    </div>
-    <div class="admin-addMovie-div">
-        <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="find-all-movies" style="margin-right: 5px; width: 200px;">find all movies</button>
-        <button ng-if="isAdminUser" class="buttons-add-item-admin form-control btn btn-outline-light" ui-sref="create-movie">add movie</button>
-    </div>
+      </a>
+    </section>
+  </div>
+  <div class="admin-addMovie-div">
+    <button
+      class="buttons-add-item-admin form-control btn btn-outline-light"
+      ui-sref="find-all-movies"
+      style="margin-right: 5px; width: 200px"
+    >
+      find all movies
+    </button>
+    <button
+      class="buttons-add-item-admin form-control btn btn-outline-light"
+      ui-sref="create-movie"
+    >
+      add movie
+    </button>
+  </div>
 </div>
