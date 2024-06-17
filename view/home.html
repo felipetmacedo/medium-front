@@ -1,51 +1,26 @@
-<div class="gif-div" ng-show="loading">
-  <img class="gif-image" src="../assets/images/loading.gif" />
-</div>
-<div ng-show="!loading ">
-  <header class="header">
-    <img class="full-logo-header" src="../assets/images/amigo.png" />
-    <div class="buttons-header">
+<div class="doca">
+  <div className="doca-loading" ng-show="">
+    <div className="doca-loading__animation"></div>
+  </div>
+  <div ng-show="!loading ">
+    <div ui-navbar></div>
+    </header>
+    <div class="grid-container">
+      <section class="grid-item" ng-repeat="cover in covers">
+        <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
+          <div class="divRating">
+          </div>
+        </a>
+      </section>
+    </div>
+
+    <div class="admin-addMovie-div">
       <button
-        class="buttons-header-item form-control btn btn-outline-light"
-        style="width: 6vw"
-        ui-sref="home"
-        ng-if="!isUserLoggedIn"
+        class="buttons-add-item-admin form-control btn btn-outline-light"
+        ui-sref="create-movie"
       >
-        Login
-      </button>
-      <button
-        class="buttons-header-item form-control btn btn-outline-light"
-        ui-sref="profile"
-        style="width: 6vw"
-        ng-if="!isUserLoggedIn"
-      >
-        Cadastrar
-      </button>
-      <button
-        class="buttons-header-item form-control btn btn-primary"
-        style="width: 6vw"
-        ng-click="logOut()"
-      >
-        Log Out
+        add movie
       </button>
     </div>
-  </header>
-  <div class="grid-container">
-    <section class="grid-item" ng-repeat="cover in covers">
-      <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
-        <img id="card-img" ng-src="../assets/covers/{{cover.filename}}" />
-        <div class="divRating">
-          <p class="movieRating">{{cover.movie.rating| number:1 }}</p>
-        </div>
-      </a>
-    </section>
-  </div>
-  <div class="admin-addMovie-div">
-    <button
-      class="buttons-add-item-admin form-control btn btn-outline-light"
-      ui-sref="create-movie"
-    >
-      add movie
-    </button>
   </div>
 </div>

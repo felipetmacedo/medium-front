@@ -1,0 +1,32 @@
+<header class="ui-header">
+  <img
+    class="ui-logo-header"
+    src="https://avatars.githubusercontent.com/u/55717360?s=200&v=4"
+  />
+  <div>
+    {{ user }}
+    <button
+      class="doca-button doca-button--secondary"
+      style="width: 6vw"
+      ui-sref="home"
+      ng-if="!isUserLoggedIn"
+    >
+      Login
+    </button>
+    <button
+      class="doca-button doca-button--primary"
+      ui-sref="profile"
+      style="width: 6vw"
+      ng-if="!isUserLoggedIn"
+    >
+      Cadastrar
+    </button>
+    <button
+      class="doca-button doca-button--primary"
+      style="width: 6vw"
+      ng-if="isUserLoggedIn"
+    >
+      Log Out
+    </button>
+  </div>
+</header>

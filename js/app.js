@@ -22,7 +22,6 @@ myApp.config(function ($stateProvider, $httpProvider) {
       url: "/home",
       templateUrl: "view/home.html",
       controller: "homeController",
-      onEnter: isAuthorized,
     })
     .state({
       name: "show-movie",
@@ -96,10 +95,8 @@ myApp.config(function ($stateProvider, $httpProvider) {
 const isAuthorized = ($state, $rootScope) => {
   const isLogged = localStorage.getItem("token");
 
-  $rootScope.isAdmin = localStorage.getItem("is_admin");
-
   if (!isLogged) {
-    $state.go("login");
+    $state.go("home");
     return;
   }
 

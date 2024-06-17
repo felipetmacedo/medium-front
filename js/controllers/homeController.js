@@ -1,22 +1,20 @@
 myApp.controller("homeController", [
   "$rootScope",
   "$scope",
-  "MovieService",
-  "$state",
-  function ($rootScope, $scope, MovieService, $state) {
-    $scope.isAdminUser = !!$rootScope.isAdmin;
-
+  "PostService",
+  function ($rootScope, $scope, PostService) {
     $scope.isUserLoggedIn = $rootScope.userLogged;
 
     const init = () => {
       $scope.loading = true;
     };
 
-    const index = () => {
-      MovieService.getCovers($scope.buscarFilmes)
+    const list = () => {
+      PostService.getPosts(1)
         .then((resp) => {
           $scope.loading = false;
           $scope.covers = resp.data;
+          console.log(resp.data);
         })
         .catch((e) => {
           $scope.loading = false;
@@ -30,25 +28,8 @@ myApp.controller("homeController", [
         });
     };
 
-    const logOut = () => {
-      Swal.fire({
-        title: "Log out?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $state.go("login");
-          localStorage.clear();
-        }
-      });
-    };
-
-    $scope.logOut = logOut;
-    $scope.busca = index;
-    index();
     init();
+    list();
+    $scope.busca = list;
   },
 ]);
