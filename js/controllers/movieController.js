@@ -40,7 +40,6 @@ myApp.controller("movieController", [
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
-          $state.go("login");
           localStorage.clear();
         }
       });

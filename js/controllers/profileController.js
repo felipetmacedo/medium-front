@@ -73,7 +73,6 @@ myApp.controller("profileController", [
           return UserService.deleteUser()
             .then(() => {
               localStorage.clear();
-              $state.go("login");
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             })
             .catch((e) => {
@@ -107,7 +106,6 @@ myApp.controller("profileController", [
       }).then((result) => {
         $scope.loading = false;
         if (result.isConfirmed) {
-          $state.go("login");
           localStorage.clear();
         }
       });
