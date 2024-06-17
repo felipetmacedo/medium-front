@@ -1,58 +1,130 @@
 <div class="gif-div" ng-show="loading">
-    <img class="gif-image" src="../assets/images/loading.gif">
+  <img class="gif-image" src="../assets/images/loading.gif" />
 </div>
 <div ng-show="!loading">
-    <header class="header">
-        <img class="full-logo-header" src="../assets/images/fullMovies.png">
-        <div class="buttons-header">
-            <div class="input-container" style="margin-right: 20px; display: flex;">
-                <img src="../assets/images/search.svg">
-                <input class="search-input" type="text" style="width:16vw" placeholder="search users..."
-                    ng-model="buscarUsers" ng-change="buscaUsers()" ng-model-options="{ debounce: 500 }"
-                    uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
-                    typeahead-template-url="view/customTemplate.html" typeahead-on-select="refresh(buscarUsers)">
-            </div>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width:150px"
-                ng-click="buscaUsers()" ng-if="isAdmin" ui-sref="every-user">find all users</button>
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
-                ui-sref="all-movies">return</button>
-            <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
-                style="width: 6vw;">profile</button>
-            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log
-                out</button>
-        </div>
-    </header>
-    <div class="main-div-profile">
-        <div class="text-div-profile">
-            <p class="profile-info-title">{{user.username | limitTo: 15}}</p>
-
-            <div class="organize-info" style="display: flex; margin-top: -25px;">
-                <p class="profile-info">most watched genre: {{user.most_watched_genre | limitTo: 20}}</p>
-                <p class="profile-info">total time: {{user.total_time}} minutes</p>
-            </div>
-            <div>
-                <button class="buttons-show-item form-control btn btn-outline-light"
-                    style="width: max-content; margin-right: -15px ;" ui-sref="all-movies"
-                    ng-if="showButtons && !isAdmin">add new movies</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content;"
-                    ui-sref="update-user" ng-if="showButtons && !isAdmin">update user</button>
-                <button class="buttons-show-item form-control btn btn-light" style="width:fit-content"
-                    ng-click="deleteOtherUser()" ng-if="isAdmin && !showButtons">delete this user</button>
-                <button class="buttons-show-item form-control btn btn-outline-light" style="width: max-content;"
-                    ng-click="makeAdmin()" ng-if="!showButtons && isAdmin">make admin</button>
-            </div>
-            <button class="buttons-show-item form-control btn btn-light" style="width:fit-content"
-                ng-click="deleteUser()" ng-if="showButtons">delete user</button>
-        </div>
-        <div class="grid-container-profile">
-            <section class="grid-item" ng-repeat="watched in watcheds.allImages  | limitTo: 30">
-                <a class="card-image" href="#!/movies/{{watched.movie_id}}">
-                    <img id="card-img-profile" ng-src="../assets/covers/{{watched.filename}}">
-                </a>
-            </section>
-            <button class="buttons-show-item form-control btn btn-outline-light"
-                style="width: max-content;margin-left: 5px;" ui-sref="all-user-movies"
-                ng-if="showButtons && !isAdmin">see all movies</button>
-        </div>
+  <header class="header">
+    <img class="full-logo-header" src="../assets/images/amigo.png" />
+    <div class="buttons-header">
+      <div class="input-container" style="margin-right: 20px; display: flex">
+        <img src="../assets/images/search.svg" />
+        <input
+          class="search-input"
+          type="text"
+          style="width: 16vw"
+          placeholder="search users..."
+          ng-model="buscarUsers"
+          ng-change="buscaUsers()"
+          ng-model-options="{ debounce: 500 }"
+          uib-typeahead="user as user.username for user in users | filter:{username:$viewValue}"
+          typeahead-template-url="view/customTemplate.html"
+          typeahead-on-select="refresh(buscarUsers)"
+        />
+      </div>
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        style="width: 150px"
+        ng-click="buscaUsers()"
+        ng-if="isAdmin"
+        ui-sref="every-user"
+      >
+        find all users
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        style="width: 6vw"
+        ui-sref="all-movies"
+      >
+        return
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        ui-sref="profile"
+        style="width: 6vw"
+      >
+        profile
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-primary"
+        style="width: 6vw"
+        ng-click="logOut()"
+      >
+        log out
+      </button>
     </div>
+  </header>
+  <div class="main-div-profile">
+    <div class="text-div-profile">
+      <p class="profile-info-title">{{user.username | limitTo: 15}}</p>
+
+      <div class="organize-info" style="display: flex; margin-top: -25px">
+        <p class="profile-info">
+          most watched genre: {{user.most_watched_genre | limitTo: 20}}
+        </p>
+        <p class="profile-info">total time: {{user.total_time}} minutes</p>
+      </div>
+      <div>
+        <button
+          class="buttons-show-item form-control btn btn-outline-light"
+          style="width: max-content; margin-right: -15px"
+          ui-sref="all-movies"
+          ng-if="showButtons && !isAdmin"
+        >
+          add new movies
+        </button>
+        <button
+          class="buttons-show-item form-control btn btn-outline-light"
+          style="width: max-content"
+          ui-sref="update-user"
+          ng-if="showButtons && !isAdmin"
+        >
+          update user
+        </button>
+        <button
+          class="buttons-show-item form-control btn btn-light"
+          style="width: fit-content"
+          ng-click="deleteOtherUser()"
+          ng-if="isAdmin && !showButtons"
+        >
+          delete this user
+        </button>
+        <button
+          class="buttons-show-item form-control btn btn-outline-light"
+          style="width: max-content"
+          ng-click="makeAdmin()"
+          ng-if="!showButtons && isAdmin"
+        >
+          make admin
+        </button>
+      </div>
+      <button
+        class="buttons-show-item form-control btn btn-light"
+        style="width: fit-content"
+        ng-click="deleteUser()"
+        ng-if="showButtons"
+      >
+        delete user
+      </button>
+    </div>
+    <div class="grid-container-profile">
+      <section
+        class="grid-item"
+        ng-repeat="watched in watcheds.allImages  | limitTo: 30"
+      >
+        <a class="card-image" href="#!/movies/{{watched.movie_id}}">
+          <img
+            id="card-img-profile"
+            ng-src="../assets/covers/{{watched.filename}}"
+          />
+        </a>
+      </section>
+      <button
+        class="buttons-show-item form-control btn btn-outline-light"
+        style="width: max-content; margin-left: 5px"
+        ui-sref="all-user-movies"
+        ng-if="showButtons && !isAdmin"
+      >
+        see all movies
+      </button>
+    </div>
+  </div>
 </div>

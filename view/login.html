@@ -1,31 +1,50 @@
 <div class="login-mainDiv">
-    <div class="movies-background"> </div>
-    <div class="container-login">
-        <div class="login-form-container">
-            <div class="full-logo-container-login">
-                <img class="full-logo" src="../assets/images/fullMovies.png">
-            </div>
-            <form class="form-login">
-                <div class="login-container-form-item">
-                    <label for="email">E-mail</label>
-                    <input class="form-control" type="text" ng-model="user.email" ng-required="true" ng-minlength="10"
-                        placeholder="" />
-                </div>
-                <div class="login-container-form-item">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="password" ng-model="user.password" ng-minlength="6"
-                        ng-required="true" placeholder="" />
-                    <h6 class="login-esqueceu-senha"><a ui-sref="recover">esqueci minha senha</a>
-                    </h6>
-                </div>
-                <div class="login-container-form-item">
-                    <button class="btn btn-block login-btn" ng-click="login()"
-                        ng-disabled="!user.email || !user.password">Login</button>
-                </div>
-                <h6 class="login-cadastrar-usuario">Não tem uma conta? <a style="color: #C8A5E6;"
-                        ui-sref="cadastro">cadastre-se aqui</a>
-                </h6>
-            </form>
+  <div class="movies-background"></div>
+  <div class="container-login">
+    <div class="login-form-container">
+      <div class="full-logo-container-login">
+        <img class="full-logo" src="../assets/images/amigo.png" />
+      </div>
+      <form class="form-login">
+        <div class="login-container-form-item">
+          <label for="email">E-mail</label>
+          <input
+            class="form-control"
+            type="text"
+            ng-model="user.email"
+            ng-required="true"
+            ng-minlength="10"
+            placeholder=""
+          />
         </div>
+        <div class="login-container-form-item">
+          <label for="password">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            ng-model="user.password"
+            ng-minlength="6"
+            ng-required="true"
+            placeholder=""
+          />
+          <h6 class="login-esqueceu-senha">
+            <a ui-sref="recover">esqueci minha senha</a>
+          </h6>
+        </div>
+        <div class="login-container-form-item">
+          <button
+            class="btn btn-block login-btn"
+            ng-click="login()"
+            ng-disabled="!user.email || !user.password"
+          >
+            Login
+          </button>
+        </div>
+        <h6 class="login-cadastrar-usuario">
+          Não tem uma conta?
+          <a style="color: #c8a5e6" ui-sref="cadastro">cadastre-se aqui</a>
+        </h6>
+      </form>
     </div>
+  </div>
 </div>

@@ -1,51 +1,106 @@
 <div>
-    <header class="header">
-        <img class="full-logo-header" src="../assets/images/fullMovies.png">
-        <div class="buttons-header">
-            <button class="buttons-header-item form-control btn btn-outline-light" style="width: 6vw;"
-                ui-sref="all-movies">movies</button>
-            <button class="buttons-header-item  form-control btn btn-outline-light" ui-sref="profile"
-                style="width: 6vw;">profile</button>
-            <button class="buttons-header-item form-control btn btn-primary" style="width:6vw" ng-click="logOut()">log
-                out</button>
-        </div>
-    </header>
-    <div class="container-manage">
-        <div class="login-form-container">
-            <form class="form-login">
-                <h1 class="title-admin">{{title}}</h1>
-                <div class="login-container-form-item">
-                    <label for="name">name</label>
-                    <input class="form-control" type="text" ng-model="movieData.name" ng-required="true" />
-                </div>
-                <div class="login-container-form-item">
-                    <label for="director">director</label>
-                    <input class="form-control" ng-model="movieData.director" ng-required="true">
-                </div>
-                <div class="login-container-form-item">
-                    <label for="genre">genre</label>
-                    <input class="form-control" ng-model="movieData.genre" ng-required="true" />
-                </div>
-                <div class="login-container-form-item">
-                    <label for="time">time</label>
-                    <input class="form-control" ng-model="movieData.time" ng-required="true" type="number" />
-                </div>
-                <div class="login-container-form-item">
-                    <label for="synopsis">synopsis</label>
-                    <input class="form-control" ng-model="movieData.synopsis" ng-required="true" />
-                </div>
-                <div ng-show="!idEdit" class="login-container-form-item" style="justify-content: center">
-                    <label for="cover">cover</label>
-                    <input ng-required="true" onchange="angular.element(this).scope().loadImage(this)" name="file" class="form-control"
-                        select-ng-files placeholder="Imagem Url" id="fileTobase64" type="file"
-                        accept="image/png, image/jpeg"  style="padding-bottom:35px;"/>
-                    <img id="imgTest" />
-                </div>
-                <div class="login-container-form-item">
-                    <button class="btn btn-block cadastro-button" ng-click="actionFunction()"
-                        ng-disabled="!movieData.name || !movieData.director || !movieData.genre|| !movieData.time || !movieData.synopsis">Confirmar</button>
-                </div>
-            </form>
-        </div>
+  <header class="header">
+    <img class="full-logo-header" src="../assets/images/amigo.png" />
+    <div class="buttons-header">
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        style="width: 6vw"
+        ui-sref="all-movies"
+      >
+        movies
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-outline-light"
+        ui-sref="profile"
+        style="width: 6vw"
+      >
+        profile
+      </button>
+      <button
+        class="buttons-header-item form-control btn btn-primary"
+        style="width: 6vw"
+        ng-click="logOut()"
+      >
+        log out
+      </button>
     </div>
+  </header>
+  <div class="container-manage">
+    <div class="login-form-container">
+      <form class="form-login">
+        <h1 class="title-admin">{{title}}</h1>
+        <div class="login-container-form-item">
+          <label for="name">name</label>
+          <input
+            class="form-control"
+            type="text"
+            ng-model="movieData.name"
+            ng-required="true"
+          />
+        </div>
+        <div class="login-container-form-item">
+          <label for="director">director</label>
+          <input
+            class="form-control"
+            ng-model="movieData.director"
+            ng-required="true"
+          />
+        </div>
+        <div class="login-container-form-item">
+          <label for="genre">genre</label>
+          <input
+            class="form-control"
+            ng-model="movieData.genre"
+            ng-required="true"
+          />
+        </div>
+        <div class="login-container-form-item">
+          <label for="time">time</label>
+          <input
+            class="form-control"
+            ng-model="movieData.time"
+            ng-required="true"
+            type="number"
+          />
+        </div>
+        <div class="login-container-form-item">
+          <label for="synopsis">synopsis</label>
+          <input
+            class="form-control"
+            ng-model="movieData.synopsis"
+            ng-required="true"
+          />
+        </div>
+        <div
+          ng-show="!idEdit"
+          class="login-container-form-item"
+          style="justify-content: center"
+        >
+          <label for="cover">cover</label>
+          <input
+            ng-required="true"
+            onchange="angular.element(this).scope().loadImage(this)"
+            name="file"
+            class="form-control"
+            select-ng-files
+            placeholder="Imagem Url"
+            id="fileTobase64"
+            type="file"
+            accept="image/png, image/jpeg"
+            style="padding-bottom: 35px"
+          />
+          <img id="imgTest" />
+        </div>
+        <div class="login-container-form-item">
+          <button
+            class="btn btn-block cadastro-button"
+            ng-click="actionFunction()"
+            ng-disabled="!movieData.name || !movieData.director || !movieData.genre|| !movieData.time || !movieData.synopsis"
+          >
+            Confirmar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
