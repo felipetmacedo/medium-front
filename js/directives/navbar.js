@@ -1,8 +1,8 @@
-myApp.directive("uiNavbar", function () {
+myApp.directive("navbar", function () {
   return {
     templateUrl: "view/navbar.html",
     replace: true,
-    restrict: "AE",
+    restrict: "E",
     controller: "navbarController",
     scope: {
       title: "@",

@@ -11,3 +11,10 @@
   height: 3rem;
   width: 3rem;
 }
+
+.justify-self-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

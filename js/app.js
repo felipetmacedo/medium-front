@@ -24,10 +24,10 @@ myApp.config(function ($stateProvider, $httpProvider) {
       controller: "homeController",
     })
     .state({
-      name: "show-movie",
-      url: "/movies/:id",
-      templateUrl: "view/show-movie.html",
-      controller: "showMovieController",
+      name: "show-post",
+      url: "/post/:id",
+      templateUrl: "view/show-post.html",
+      controller: "showPostController",
       onEnter: isAuthorized,
     })
     .state({

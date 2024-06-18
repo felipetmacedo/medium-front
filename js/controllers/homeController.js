@@ -4,21 +4,14 @@ myApp.controller("homeController", [
   "PostService",
   function ($rootScope, $scope, PostService) {
     $scope.isUserLoggedIn = $rootScope.userLogged;
-
-    const init = () => {
-      $scope.loading = true;
-      list();
-    };
+    $scope.loading = true;
 
     const list = () => {
       PostService.getPosts(1)
         .then((resp) => {
-          $scope.loading = false;
-          console.log(resp.data.data.posts);
           $scope.posts = resp.data.data.posts;
         })
         .catch((e) => {
-          $scope.loading = false;
           Swal.fire({
             position: "center",
             icon: "error",
@@ -26,6 +19,9 @@ myApp.controller("homeController", [
             showConfirmButton: false,
             timer: 1500,
           });
+        })
+        .finally(() => {
+          $scope.loading = false;
         });
     };
 
@@ -33,7 +29,8 @@ myApp.controller("homeController", [
       return text.length > length ? text.substring(0, length) + "..." : text;
     };
 
-    init(); // Initialize when the controller is loaded
+    list();
+
     $scope.busca = list; // Assign the list function to $scope.busca
     $scope.truncate = truncate; // Assign the truncate function to $scope.truncate
   },

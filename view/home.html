@@ -1,22 +1,25 @@
 <div class="doca">
-  <div class="doca-loading" ng-show="loading">
-    <div class="doca-loading__animation"></div>
-  </div>
-  <div ui-navbar></div>
+  <navbar></navbar>
+
+  <loading class="doca-mt-8" ng-show="loading"></loading>
+
   <div
     class="doca-page"
-    style="margin-inline: 6rem; border-radius: 1rem; margin-top: 2rem"
     ng-show="!loading"
+    style="margin-inline: 6rem; border-radius: 1rem; margin-top: 2rem"
   >
     <div>
       <div ng-repeat="post in posts">
         <ul class="doca-list">
-          <li class="doca-list__item">
-            <h1 class="doca-page__title">{{ truncate(post.title, 50) }}</h1>
-            <h2 class="doca-page__subtitle">
-              {{ truncate(post.content, 400) }}
-            </h2>
-          </li>
+          <a ng-href="#!/post/{{ post.id }}">
+            <li class="doca-list__item">
+                <h1 class="doca-page__title">{{ truncate(post.title, 50) }}</h1>
+                <h2 class="doca-page__subtitle">
+                  {{ truncate(post.content, 400) }}
+              </h2>
+              </li>
+            </li>
+          </a>
         </ul>
       </div>
     </div>
