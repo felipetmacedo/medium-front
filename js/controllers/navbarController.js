@@ -50,7 +50,7 @@ myApp.controller("navbarController", [
       return UserService.create($scope.formData)
         .then(() => {
           $scope.err = false;
-          $state.go("login");
+          $state.go("home");
         })
         .catch((e) => {
           const confirmation = Swal.fire({
@@ -84,6 +84,7 @@ myApp.controller("navbarController", [
         if (result.isConfirmed) {
           $rootScope.userLogged = false;
           localStorage.clear();
+          window.location.reload();
         }
       });
     };

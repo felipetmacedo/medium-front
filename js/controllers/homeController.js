@@ -7,29 +7,34 @@ myApp.controller("homeController", [
 
     const init = () => {
       $scope.loading = true;
+      list();
     };
 
     const list = () => {
       PostService.getPosts(1)
         .then((resp) => {
           $scope.loading = false;
-          $scope.covers = resp.data;
-          console.log(resp.data);
+          console.log(resp.data.data.posts);
+          $scope.posts = resp.data.data.posts;
         })
         .catch((e) => {
           $scope.loading = false;
           Swal.fire({
             position: "center",
             icon: "error",
-            title: "an error ocurred",
+            title: "An error occurred",
             showConfirmButton: false,
             timer: 1500,
           });
         });
     };
 
-    init();
-    list();
-    $scope.busca = list;
+    const truncate = (text, length) => {
+      return text.length > length ? text.substring(0, length) + "..." : text;
+    };
+
+    init(); // Initialize when the controller is loaded
+    $scope.busca = list; // Assign the list function to $scope.busca
+    $scope.truncate = truncate; // Assign the truncate function to $scope.truncate
   },
 ]);

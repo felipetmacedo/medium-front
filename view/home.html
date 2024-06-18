@@ -1,26 +1,24 @@
 <div class="doca">
-  <div className="doca-loading" ng-show="">
-    <div className="doca-loading__animation"></div>
+  <div class="doca-loading" ng-show="loading">
+    <div class="doca-loading__animation"></div>
   </div>
-  <div ng-show="!loading ">
-    <div ui-navbar></div>
-    </header>
-    <div class="grid-container">
-      <section class="grid-item" ng-repeat="cover in covers">
-        <a class="card-image" ng-href="#!/movies/{{cover.movie.id}}">
-          <div class="divRating">
-          </div>
-        </a>
-      </section>
-    </div>
-
-    <div class="admin-addMovie-div">
-      <button
-        class="buttons-add-item-admin form-control btn btn-outline-light"
-        ui-sref="create-movie"
-      >
-        add movie
-      </button>
+  <div ui-navbar></div>
+  <div
+    class="doca-page"
+    style="margin-inline: 6rem; border-radius: 1rem; margin-top: 2rem"
+    ng-show="!loading"
+  >
+    <div>
+      <div ng-repeat="post in posts">
+        <ul class="doca-list">
+          <li class="doca-list__item">
+            <h1 class="doca-page__title">{{ truncate(post.title, 50) }}</h1>
+            <h2 class="doca-page__subtitle">
+              {{ truncate(post.content, 400) }}
+            </h2>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

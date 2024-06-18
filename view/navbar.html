@@ -4,7 +4,6 @@
     src="https://avatars.githubusercontent.com/u/55717360?s=200&v=4"
   />
   <div>
-    {{ user }}
     <button
       class="doca-button doca-button--secondary"
       style="width: 6vw"
@@ -25,6 +24,7 @@
       class="doca-button doca-button--primary"
       style="width: 6vw"
       ng-if="isUserLoggedIn"
+      ng-click="logOut()"
     >
       Log Out
     </button>
