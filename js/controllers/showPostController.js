@@ -4,6 +4,7 @@ myApp.controller("showPostController", [
   "$stateParams",
   function ($scope, PostService, $stateParams) {
     const id = $stateParams.id;
+    $scope.loading = true;
 
     const init = () => {
       show();
@@ -12,7 +13,7 @@ myApp.controller("showPostController", [
     const show = () => {
       PostService.getPost(id)
         .then((resp) => {
-          $scope.post = resp.data;
+          $scope.post = resp.data.data;
         })
         .catch((err) => {
           Swal.fire({
@@ -22,6 +23,9 @@ myApp.controller("showPostController", [
             showConfirmButton: false,
             timer: 1500,
           });
+        })
+        .finally(() => {
+          $scope.loading = false;
         });
     };
 

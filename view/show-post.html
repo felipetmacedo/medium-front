@@ -1,6 +1,26 @@
 <div class="doca">
   <navbar></navbar>
-  <div class="main-div-show">
-    <div class="text-div">{{post}}</div>
+  <div>
+    <loading class="doca-mt-8" ng-show="loading"></loading>
+
+    <div class="doca-p-4" ng-show="!loading">
+      <h1 class="doca-page__title">{{post.title}}</h1>
+      <p class="doca-page__subtitle">
+        {{ post.created_at | dateFormat: 'DD/MM/YYYY' }}
+      </p>
+      <hr class="doca-separator" />
+      <button ng-click="likePost()">
+        <i
+          class="doca-icon doca-icon__heart"
+          ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"
+        ></i>
+      </button>
+      <span
+        ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"
+        >{{post.total_likes}}
+      </span>
+      <hr class="doca-separator" />
+      <p class="doca-page__subtitle doca-mt-4">{{post.content}}</p>
+    </div>
   </div>
 </div>
