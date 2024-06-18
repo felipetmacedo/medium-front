@@ -10,7 +10,8 @@ myApp.controller("loginController", [
     const login = () => {
       LoginService.getToken($scope.user)
         .then((resp) => {
-          localStorage.setItem("token", resp.data.token);
+          console.log(resp);
+          localStorage.setItem("token", resp.data.data.token);
           localStorage.setItem("email", $scope.user.email);
 
           $scope.user.email = "";
