@@ -13,6 +13,7 @@ myApp.controller("ModalLoginCtrl", [
     };
 
     $scope.submit = function () {
+      console.log("fefef");
       UserService.login($scope.user)
         .then(function (resp) {
           console.log(resp);

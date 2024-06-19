@@ -40,13 +40,17 @@ myApp.controller("navbarController", [
         backdropClass: "doca-modal__backdrop",
       });
     };
-
+    console.log($scope.onCreatePost, "$scope.onCreatePost");
     $scope.triggerWrite = function () {
-      $modal.open({
+      const modalInstance = $modal.open({
         templateUrl: "view/modal-post.html",
         controller: "ModalPostCtrl",
         windowClass: "doca-modal modal-dark fullscreen-modal",
         backdropClass: "doca-modal__backdrop",
+      });
+
+      modalInstance.result.then(() => {
+        $scope.onCreatePost && $scope.onCreatePost();
       });
     };
     $scope.logOut = logOut;

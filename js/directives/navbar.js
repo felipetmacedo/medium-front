@@ -6,6 +6,7 @@ myApp.directive("navbar", function () {
     controller: "navbarController",
     scope: {
       title: "@",
+      onCreatePost: "=",
     },
   };
 });

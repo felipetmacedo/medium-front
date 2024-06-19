@@ -8,16 +8,36 @@
         {{ post.user.name }} - {{ post.created_at | dateFormat: 'DD/MM/YYYY' }}
       </p>
       <hr class="doca-separator" />
-      <button ng-click="like()">
-        <i
-          class="doca-icon doca-icon__heart"
-          ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"
-        ></i>
-      </button>
-      <span
-        ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"
-        >{{post.total_likes}}
-      </span>
+      <div
+        style="display: flex; flex-direction: row; align-content: space-between"
+      >
+        <div>
+          <button
+            class="doca-button doca-button--rounded doca-button--tertiary"
+            ng-click="like()"
+          >
+            <i
+              class="doca-icon doca-icon__heart"
+              ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"
+            >
+            </i>
+            {{post.total_likes}}
+          </button>
+        </div>
+        <div style="margin-left: auto">
+          <button
+            class="doca-button doca-button--rounded doca-button--tertiary"
+          >
+            <i class="doca-icon doca-icon__pen"> </i>
+          </button>
+          <button
+            class="doca-button doca-button--rounded doca-button--tertiary"
+            ng-click="deletePost()"
+          >
+            <i class="doca-icon doca-icon__trash"> </i>
+          </button>
+        </div>
+      </div>
       <hr class="doca-separator" />
       <p class="doca-page__subtitle doca-mt-4">{{post.content}}</p>
     </div>

@@ -18,4 +18,8 @@ myApp.service("PostService", function ($http) {
   this.dislikePost = (id) => {
     return $http.post(`${baseUrl}posts/${id}/dislike`);
   };
+
+  this.deletePost = (id) => {
+    return $http.delete(`${baseUrl}posts/${id}`);
+  };
 });

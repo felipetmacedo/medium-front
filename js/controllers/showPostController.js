@@ -18,7 +18,6 @@ myApp.controller("showPostController", [
         .catch((err) => {
           Swal.fire({
             position: "center",
-            icon: "error",
             title: "an error ocurred",
             showConfirmButton: false,
             timer: 1500,
@@ -61,7 +60,33 @@ myApp.controller("showPostController", [
       }
     };
 
+    const deletePost = () => {
+      PostService.deletePost(id)
+        .then((resp) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Post deleted",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setTimeout(() => {
+            window.location.href = "#!/home";
+          }, 1500);
+        })
+        .catch((err) => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "an error ocurred",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
+    };
+
     init();
+    $scope.deletePost = deletePost;
     $scope.like = like;
   },
 ]);

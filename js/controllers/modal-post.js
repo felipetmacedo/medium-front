@@ -9,20 +9,19 @@ myApp.controller("ModalPostCtrl", [
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss("cancel");
+      $modalInstance.dismiss();
     };
 
     $scope.submit = function () {
       PostService.createPost($scope.formData)
         .then(() => {
-          $modalInstance.dismiss("cancel");
+          $modalInstance.close();
+
           Swal.fire({
             title: "Post criado com sucesso!",
             icon: "success",
             timer: 2000,
           });
-          $scope.formData.title = "";
-          $scope.formData.content = "";
         })
         .catch(() => {
           Swal.fire({
@@ -30,10 +29,6 @@ myApp.controller("ModalPostCtrl", [
             text: "Verifique as suas informações!",
             icon: "error",
           });
-          localStorage.clear();
-          $scope.formData.title = "";
-          $scope.formData.conten = "";
-          window.location.reload();
         });
     };
   },

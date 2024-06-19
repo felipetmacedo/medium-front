@@ -14,23 +14,21 @@ myApp.controller("ModalSignUpCtrl", [
     };
 
     $scope.submit = function () {
-      PostService.createPost($scope.formData)
-        .then(async () => {
-          await Swal.fire({
-            title: "Post criado com sucesso!",
+      UserService.create($scope.formData)
+        .then(() => {
+          Swal.fire({
+            title: "Conta criada com sucesso!",
+            text: "Faça login para continuar!",
             icon: "success",
-            timer: 1000,
           });
-          $scope.postData.title = "";
-          $scope.postData.content = "";
+          $modalInstance.close();
         })
         .catch(() => {
           Swal.fire({
-            title: "Erro ao criar post!",
+            title: "Dados Inválidos!",
+            text: "Verifique as suas informações!",
             icon: "error",
           });
-          $scope.postData.title = "";
-          $scope.postData.content = "";
         });
     };
   },
