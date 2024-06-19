@@ -91,10 +91,11 @@ myApp.controller("navbarController", [
 
     const createPost = () => {
       PostService.createPost($scope.formData)
-        .then(() => {
-          Swal.fire({
+        .then(async () => {
+          await Swal.fire({
             title: "Post criado com sucesso!",
             icon: "success",
+            timer: 1000,
           });
           $scope.postData.title = "";
           $scope.postData.content = "";
