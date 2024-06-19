@@ -8,17 +8,15 @@
   <div>
     <button
       class="doca-button doca-button--secondary"
-      style="width: 6vw"
       ui-sref="home"
       ng-if="!isUserLoggedIn"
       ng-click="triggerLogin()"
     >
-      Login
+      Entrar
     </button>
     <button
       class="doca-button doca-button--primary"
       ui-sref="profile"
-      style="width: 6vw"
       ng-if="!isUserLoggedIn"
       ng-click="triggerRegister()"
     >
@@ -26,19 +24,20 @@
     </button>
     <button
       class="doca-button doca-button--tertiary"
-      style="width: 6vw"
       ng-if="isUserLoggedIn"
+      s
       ng-click="triggerWrite()"
     >
-      Write
+      <i class="doca-icon doca-icon__edit"></i>
+      Escrever
     </button>
     <button
       class="doca-button doca-button--primary"
-      style="width: 6vw"
       ng-if="isUserLoggedIn"
       ng-click="logOut()"
     >
-      Log Out
+      Sair
+      <i class="doca-icon doca-icon__right-from-bracket"></i>
     </button>
   </div>
 </header>
