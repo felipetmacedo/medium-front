@@ -2,14 +2,24 @@ myApp.controller("homeController", [
   "$rootScope",
   "$scope",
   "PostService",
-  function ($rootScope, $scope, PostService) {
+  "$window",
+  function ($rootScope, $scope, PostService, $window) {
     $scope.isUserLoggedIn = $rootScope.userLogged;
-    $scope.loading = true;
+    $scope.loading = false;
+    $scope.page = 1;
+    $scope.posts = [];
 
-    const list = () => {
-      PostService.getPosts(1)
+    const list = (page) => {
+      if ($scope.loading) {
+        return;
+      }
+
+      $scope.loading = true;
+
+      PostService.getPosts(page)
         .then((resp) => {
-          $scope.posts = resp.data.data.posts;
+          console.log(resp, "resp");
+          $scope.posts = $scope.posts.concat(resp.data.data.posts);
         })
         .catch((e) => {
           Swal.fire({
@@ -22,14 +32,36 @@ myApp.controller("homeController", [
         })
         .finally(() => {
           $scope.loading = false;
+          $scope.$applyAsync(); // Apply changes to the scope
         });
     };
 
-    const truncate = (text, length) => {
-      return text.length > length ? text.substring(0, length) + "..." : text;
+    const onScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      const clientHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      const isOnPageScrollEnd = scrollTop + clientHeight >= scrollHeight - 100;
+
+      if (isOnPageScrollEnd && !$scope.loading) {
+        // Load more posts when user scrolls near the bottom
+        $scope.page++;
+        list($scope.page);
+      }
     };
 
-    list();
+    // Initial load
+    list($scope.page);
+
+    // Attach scroll event listener
+    angular.element($window).on("scroll", onScroll);
+
+    // Cleanup event listener when scope is destroyed
+    $scope.$on("$destroy", () => {
+      angular.element($window).off("scroll", onScroll);
+    });
 
     $scope.busca = list;
     $scope.truncate = truncate;
