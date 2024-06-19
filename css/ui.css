@@ -18,3 +18,7 @@
   align-items: center;
   width: 100%;
 }
+
+.modal {
+  display: block;
+}

@@ -9,7 +9,6 @@ myApp.controller("navbarController", [
       email: "",
       password: "",
     };
-
     $scope.formData = {
       username: "",
       email: "",
@@ -20,16 +19,17 @@ myApp.controller("navbarController", [
     const login = () => {
       UserService.login($scope.user)
         .then((resp) => {
-          localStorage.setItem("token", resp.data.token);
+          console.log(resp);
+          localStorage.setItem("token", resp.data.data.token);
           localStorage.setItem("email", $scope.user.email);
 
           $scope.user.email = "";
           $scope.user.password = "";
 
-          $state.go("home");
+          window.location.reload();
         })
         .catch((err) => {
-          const confirmation = Swal.fire({
+          Swal.fire({
             title: "Algo deu errado",
             text:
               err.data && err.data.error === "Usuario bloqueado"
@@ -38,9 +38,6 @@ myApp.controller("navbarController", [
             icon: "error",
             confirmButtonColor: "#04052e",
           });
-          if (!confirmation.isConfirmed) {
-            return;
-          }
           localStorage.clear();
           $scope.user.password = "";
         });
@@ -52,17 +49,13 @@ myApp.controller("navbarController", [
           $scope.err = false;
           $state.go("home");
         })
-        .catch((e) => {
-          const confirmation = Swal.fire({
+        .catch(() => {
+          Swal.fire({
             title: "dados inválidos",
             text: "Verifique as suas informações!",
             icon: "error",
             confirmButtonColor: "#04052e",
           });
-          if (!confirmation.isConfirmed) {
-            return;
-          }
-
           $scope.err = true;
           localStorage.clear();
           $scope.formData.username = "";
@@ -79,6 +72,7 @@ myApp.controller("navbarController", [
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
+        reverseButtons: true,
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -89,6 +83,33 @@ myApp.controller("navbarController", [
       });
     };
 
+    $scope.triggerLogin = async function () {
+      const { value: formValues } = await Swal.fire({
+        title: "Login",
+        html: `
+          <input id="swal-input1" class="swal2-input" placeholder="Email">
+          <input id="swal-input2" class="swal2-input" placeholder="Password">
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        reverseButtons: true,
+        preConfirm: () => {
+          return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+          ];
+        },
+      });
+      if (formValues) {
+        $scope.user.email = formValues[0];
+        $scope.user.password = formValues[1];
+        login();
+      }
+    };
     $scope.create = create;
     $scope.login = login;
     $scope.logOut = logOut;
