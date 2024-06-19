@@ -31,7 +31,7 @@ myApp.controller("homeController", [
 
     list();
 
-    $scope.busca = list; // Assign the list function to $scope.busca
-    $scope.truncate = truncate; // Assign the truncate function to $scope.truncate
+    $scope.busca = list;
+    $scope.truncate = truncate;
   },
 ]);
