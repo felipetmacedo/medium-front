@@ -4,9 +4,19 @@
     <loading class="doca-mt-8" ng-show="loading"></loading>
     <div class="doca-mt-8" ng-show="!loading">
       <h1 class="doca-page__title">{{post.title}}</h1>
-      <p class="doca-page__subtitle">
-        {{ post.user.name }} - {{ post.created_at | dateFormat: 'DD/MM/YYYY' }}
-      </p>
+      <div
+        class="doca-mt-4 doca-flex doca-flex-row doca-gap-2 doca-itens-center"
+      >
+        <img
+          alt="Imagem"
+          class="doca-avatar doca-avatar--rounded doca-avatar--large"
+          src="https://avatars.githubusercontent.com/u/119615473?v=4"
+        />
+        <div class="doca-flex doca-flex-col">
+          <p>{{ post.user.name }}</p>
+          <p>{{ post.created_at | dateFormat: 'DD/MM/YYYY' }}</p>
+        </div>
+      </div>
       <hr class="doca-separator" />
       <div
         style="display: flex; flex-direction: row; align-content: space-between"

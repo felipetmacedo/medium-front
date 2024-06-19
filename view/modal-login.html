@@ -3,7 +3,7 @@
     <h3 class="doca-text doca-text--large doca-text--medium">Login</h3>
   </div>
   <div class="modal-body" id="modal-body">
-    <form name="loginForm" ng-submit="submit()">
+    <form class="doca-gap-2 doca-flex-col doca-flex" ng-submit="submit()">
       <div class="doca-form__field doca-form__field--required">
         <label class="doca-form__label"> Email </label>
         <input
@@ -15,7 +15,7 @@
         />
       </div>
       <div class="doca-form__field doca-form__field--required">
-        <label class="doca-form__label"> Password </label>
+        <label class="doca-form__label"> Senha </label>
         <input
           type="password"
           class="doca-form-control"
@@ -37,7 +37,7 @@
           type="button"
           ng-click="cancel()"
         >
-          Cancel
+          Cancelar
         </button>
         <button class="doca-button doca-button--primary" type="submit">
           Confirmar
