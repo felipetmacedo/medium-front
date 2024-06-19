@@ -8,7 +8,7 @@
         {{ post.created_at | dateFormat: 'DD/MM/YYYY' }}
       </p>
       <hr class="doca-separator" />
-      <button ng-click="likePost()">
+      <button ng-click="like()">
         <i
           class="doca-icon doca-icon__heart"
           ng-class="{ 'doca-icon--solid doca-text--danger': post.is_liked, 'doca-icon--regular': !post.is_liked }"

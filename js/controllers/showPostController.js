@@ -29,6 +29,39 @@ myApp.controller("showPostController", [
         });
     };
 
+    const like = () => {
+      if ($scope.post.is_liked) {
+        PostService.dislikePost(id)
+          .then((resp) => {
+            window.location.reload();
+          })
+          .catch((err) => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "an error ocurred",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      } else {
+        PostService.likePost(id)
+          .then((resp) => {
+            window.location.reload();
+          })
+          .catch((err) => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "an error ocurred",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      }
+    };
+
     init();
+    $scope.like = like;
   },
 ]);
