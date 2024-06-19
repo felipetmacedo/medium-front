@@ -13,10 +13,8 @@ myApp.controller("ModalLoginCtrl", [
     };
 
     $scope.submit = function () {
-      console.log("fefef");
       UserService.login($scope.user)
         .then(function (resp) {
-          console.log(resp);
           localStorage.setItem("token", resp.data.data.token);
           localStorage.setItem("email", $scope.user.email);
 

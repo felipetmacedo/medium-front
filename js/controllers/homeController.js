@@ -18,8 +18,8 @@ myApp.controller("homeController", [
 
       PostService.getPosts(page)
         .then((resp) => {
-          console.log(resp, "resp");
           $scope.posts = $scope.posts.concat(resp.data.data.posts);
+          $scope.numPages = resp.data.data.totalPages;
         })
         .catch((e) => {
           Swal.fire({
@@ -36,6 +36,10 @@ myApp.controller("homeController", [
         });
     };
 
+    const truncate = (text, length) => {
+      return text.length > length ? text.substring(0, length) + "..." : text;
+    };
+
     const onScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight;
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -45,7 +49,11 @@ myApp.controller("homeController", [
 
       const isOnPageScrollEnd = scrollTop + clientHeight >= scrollHeight - 100;
 
-      if (isOnPageScrollEnd && !$scope.loading) {
+      if (
+        isOnPageScrollEnd &&
+        !$scope.loading &&
+        $scope.page <= $scope.numPages
+      ) {
         // Load more posts when user scrolls near the bottom
         $scope.page++;
         list($scope.page);
