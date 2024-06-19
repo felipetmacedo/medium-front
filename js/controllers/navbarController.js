@@ -2,8 +2,9 @@ myApp.controller("navbarController", [
   "$rootScope",
   "$scope",
   "UserService",
+  "PostService",
   "$state",
-  function ($rootScope, $scope, UserService, $state) {
+  function ($rootScope, $scope, UserService, PostService, $state) {
     $scope.isUserLoggedIn = $rootScope.userLogged;
     $scope.user = {
       email: "",
@@ -13,6 +14,10 @@ myApp.controller("navbarController", [
       name: "",
       email: "",
       password: "",
+    };
+    $scope.postData = {
+      title: "",
+      content: "",
     };
 
     const login = () => {
@@ -29,13 +34,9 @@ myApp.controller("navbarController", [
         })
         .catch((err) => {
           Swal.fire({
-            title: "Algo deu errado",
-            text:
-              err.data && err.data.error === "Usuario bloqueado"
-                ? err.data.error
-                : "Verifique as suas informações!",
+            title: "Dados Inválidos!",
+            text: "Verifique as suas informações!",
             icon: "error",
-            confirmButtonColor: "#04052e",
           });
           localStorage.clear();
           $scope.user.password = "";
@@ -86,6 +87,27 @@ myApp.controller("navbarController", [
           window.location.reload();
         }
       });
+    };
+
+    const createPost = () => {
+      PostService.createPost($scope.formData)
+        .then(() => {
+          Swal.fire({
+            title: "Post criado com sucesso!",
+            icon: "success",
+          });
+          $scope.postData.title = "";
+          $scope.postData.content = "";
+          window.location.reload();
+        })
+        .catch(() => {
+          Swal.fire({
+            title: "Erro ao criar post!",
+            icon: "error",
+          });
+          $scope.postData.title = "";
+          $scope.postData.content = "";
+        });
     };
 
     $scope.triggerLogin = async function () {
@@ -144,6 +166,34 @@ myApp.controller("navbarController", [
         $scope.formData.email = formValues[1];
         $scope.formData.password = formValues[2];
         create();
+      }
+    };
+
+    $scope.triggerWrite = async function () {
+      const { value: formValues } = await Swal.fire({
+        title: "Write a Post",
+        html: `
+          <input id="swal-input1" class="swal2-input" placeholder="Title">
+          <input id="swal-input2" class="swal2-input" placeholder="Content">
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        reverseButtons: true,
+        preConfirm: () => {
+          return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+          ];
+        },
+      });
+      if (formValues) {
+        $scope.formData.title = formValues[0];
+        $scope.formData.content = formValues[1];
+        createPost();
       }
     };
     $scope.logOut = logOut;

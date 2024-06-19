@@ -25,6 +25,14 @@
       Cadastrar
     </button>
     <button
+      class="doca-button doca-button--tertiary"
+      style="width: 6vw"
+      ng-if="isUserLoggedIn"
+      ng-click="triggerWrite()"
+    >
+      Write
+    </button>
+    <button
       class="doca-button doca-button--primary"
       style="width: 6vw"
       ng-if="isUserLoggedIn"
