@@ -2,7 +2,8 @@ myApp.controller("showPostController", [
   "$scope",
   "PostService",
   "$stateParams",
-  function ($scope, PostService, $stateParams) {
+  "$modal",
+  function ($scope, PostService, $stateParams, $modal) {
     const id = $stateParams.id;
     $scope.loading = true;
 
@@ -85,7 +86,25 @@ myApp.controller("showPostController", [
         });
     };
 
+    const editPost = () => {
+      $modal.open({
+        templateUrl: "view/modal-post.html",
+        controller: "ModalPostCtrl",
+        windowClass: "doca-modal modal-dark fullscreen-modal",
+        backdropClass: "doca-modal__backdrop",
+        resolve: {
+          post: () => {
+            return $scope.post;
+          },
+          id: () => {
+            return id;
+          },
+        },
+      });
+    };
+
     init();
+    $scope.editPost = editPost;
     $scope.deletePost = deletePost;
     $scope.like = like;
   },

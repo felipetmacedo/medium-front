@@ -18,7 +18,11 @@ myApp.controller("homeController", [
 
       PostService.getPosts(page)
         .then((resp) => {
-          $scope.posts = $scope.posts.concat(resp.data.data.posts);
+          if (page === 1) {
+            $scope.posts = resp.data.data.posts; // Replace posts on page 1
+          } else {
+            $scope.posts = $scope.posts.concat(resp.data.data.posts); // Append posts on subsequent pages
+          }
           $scope.numPages = resp.data.data.totalPages;
         })
         .catch((e) => {
@@ -61,16 +65,19 @@ myApp.controller("homeController", [
       }
     };
 
-    // Initial load
-    // Attach scroll event listener
+    list($scope.page);
+
     angular.element($window).on("scroll", onScroll);
 
-    // Cleanup event listener when scope is destroyed
     $scope.$on("$destroy", () => {
       angular.element($window).off("scroll", onScroll);
     });
 
-    list($scope.page);
+    $rootScope.$on("postCreated", () => {
+      $scope.page = 1; // Reset to the first page
+      list($scope.page); // Reload posts
+    });
+
     $scope.busca = list;
     $scope.truncate = truncate;
   },

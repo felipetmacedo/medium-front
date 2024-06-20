@@ -7,6 +7,10 @@ myApp.service("PostService", function ($http) {
     return $http.get(`${baseUrl}posts/${id}`);
   };
 
+  this.updatePost = (id, post) => {
+    return $http.put(`${baseUrl}posts/${id}`, post);
+  };
+
   this.createPost = (post) => {
     return $http.post(`${baseUrl}posts/`, post);
   };
