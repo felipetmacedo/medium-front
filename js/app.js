@@ -6,20 +6,8 @@ myApp.config(function ($stateProvider, $httpProvider) {
 
   $stateProvider
     .state({
-      name: "login",
-      url: "",
-      templateUrl: "view/login.html",
-      controller: "loginController",
-    })
-    .state({
-      name: "cadastro",
-      url: "/cadastro",
-      templateUrl: "view/new-user.html",
-      controller: "newUserController",
-    })
-    .state({
       name: "home",
-      url: "/home",
+      url: "",
       templateUrl: "view/home.html",
       controller: "homeController",
     })
