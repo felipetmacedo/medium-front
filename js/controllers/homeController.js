@@ -10,7 +10,7 @@ myApp.controller("homeController", [
     $scope.posts = [];
 
     const list = (page) => {
-      if ($scope.loading) {
+      if ($scope.loading || !page) {
         return;
       }
 
@@ -22,6 +22,7 @@ myApp.controller("homeController", [
           $scope.numPages = resp.data.data.totalPages;
         })
         .catch((e) => {
+          console.error(e);
           Swal.fire({
             position: "center",
             icon: "error",
@@ -52,7 +53,7 @@ myApp.controller("homeController", [
       if (
         isOnPageScrollEnd &&
         !$scope.loading &&
-        $scope.page <= $scope.numPages
+        $scope.page < $scope.numPages + 1
       ) {
         // Load more posts when user scrolls near the bottom
         $scope.page++;
@@ -61,8 +62,6 @@ myApp.controller("homeController", [
     };
 
     // Initial load
-    list($scope.page);
-
     // Attach scroll event listener
     angular.element($window).on("scroll", onScroll);
 
@@ -71,6 +70,7 @@ myApp.controller("homeController", [
       angular.element($window).off("scroll", onScroll);
     });
 
+    list($scope.page);
     $scope.busca = list;
     $scope.truncate = truncate;
   },

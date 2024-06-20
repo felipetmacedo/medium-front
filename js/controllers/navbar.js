@@ -40,7 +40,6 @@ myApp.controller("navbarController", [
         backdropClass: "doca-modal__backdrop",
       });
     };
-    console.log($scope.onCreatePost, "$scope.onCreatePost");
     $scope.triggerWrite = function () {
       const modalInstance = $modal.open({
         templateUrl: "view/modal-post.html",
