@@ -1,5 +1,5 @@
 <header class="ui-header">
-  <a class="ui-logo-header" ui-sref="home">
+  <a class="ui-logo-header" ng-href="#">
     <img
       class="ui-logo-header"
       src="https://avatars.githubusercontent.com/u/55717360?s=200&v=4"
@@ -8,7 +8,6 @@
   <div>
     <button
       class="doca-button doca-button--secondary"
-      ui-sref="home"
       ng-if="!isUserLoggedIn"
       ng-click="triggerLogin()"
     >
