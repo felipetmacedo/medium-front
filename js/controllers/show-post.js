@@ -71,7 +71,7 @@ myApp.controller("showPostController", [
             timer: 1500,
           });
           setTimeout(() => {
-            window.location.href = "#!/home";
+            window.location.href = "";
           }, 1500);
         })
         .catch((err) => {
